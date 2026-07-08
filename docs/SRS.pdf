@@ -1,0 +1,512 @@
+# Software Requirements Specification (SRS)
+
+## Project Title
+
+**JanDhan Analytics AI**
+**AI-Powered Public Spending Transparency Platform**
+
+---
+
+# Version History
+
+| Version | Date      | Author            | Description          |
+| ------- | --------- | ----------------- | -------------------- |
+| 1.0     | July 2026 | Ankit Singh Tomar | Initial SRS Document |
+
+---
+
+# Table of Contents
+
+1. Introduction
+2. Purpose
+3. Scope
+4. Problem Statement
+5. Proposed Solution
+6. Objectives
+7. Stakeholders
+8. Functional Requirements
+9. Non-Functional Requirements
+10. User Roles
+11. System Features
+12. Assumptions
+13. Constraints
+14. Future Scope
+
+---
+
+# 1. Introduction
+
+Government organizations publish large amounts of financial data every year, including budget allocations, expenditures, development projects, and public welfare spending. Although this information is publicly available through government portals and reports, it is often presented in complex spreadsheets, lengthy PDF documents, and tabular datasets that are difficult for ordinary citizens to understand.
+
+As a result, citizens, NGOs, journalists, researchers, and even government officials face challenges in analyzing public spending, identifying budget utilization trends, and detecting unusual financial patterns.
+
+**JanDhan Analytics AI** is designed to bridge this gap by transforming complex government expenditure data into meaningful visual dashboards, AI-generated insights, predictive analytics, and intelligent reports. The platform combines Artificial Intelligence, Data Analytics, Machine Learning, and interactive visualization to make public financial information transparent, accessible, and easy to understand.
+
+---
+
+# 2. Purpose
+
+The primary purpose of JanDhan Analytics AI is to improve transparency and accountability in public spending by providing an intelligent analytics platform capable of analyzing government expenditure data.
+
+The system enables users to upload or access public financial datasets, visualize spending patterns through interactive dashboards, receive AI-generated summaries, detect anomalies in expenditures, forecast future spending trends, and generate comprehensive reports.
+
+Rather than requiring users to manually analyze thousands of rows of financial records, the platform presents important insights in a simple and intuitive manner.
+
+---
+
+# 3. Scope
+
+JanDhan Analytics AI is intended to serve as an AI-powered financial transparency platform for analyzing publicly available government expenditure datasets.
+
+The platform focuses on:
+
+* Government budget allocation analysis
+* Department-wise expenditure tracking
+* District-wise spending comparison
+* Budget utilization analysis
+* AI-generated spending summaries
+* Spending trend visualization
+* Budget forecasting using Machine Learning
+* Anomaly detection in public expenditure
+* Automated report generation
+* Natural language queries using AI
+
+The project does not modify or manage government financial records. Instead, it acts as an intelligent analytics layer that processes publicly available datasets and converts them into actionable insights.
+
+---
+
+# 4. Problem Statement
+
+Government expenditure information is publicly available through various open-data portals; however, the data is usually distributed across multiple sources and published in formats that are difficult for ordinary citizens to understand.
+
+Citizens often struggle to answer questions such as:
+
+* Where is public money being spent?
+* Which departments are utilizing their allocated budgets efficiently?
+* Which districts receive the highest funding?
+* Are there any unusual spending patterns?
+* Which development sectors are underfunded?
+* How has government spending changed over time?
+
+Existing dashboards primarily provide charts and tables but rarely offer intelligent explanations, predictions, or AI-driven insights.
+
+There is a need for an intelligent platform capable of transforming raw financial datasets into understandable, interactive, and transparent information for all stakeholders.
+
+---
+
+# 5. Proposed Solution
+
+JanDhan Analytics AI addresses this problem by combining Artificial Intelligence, Data Analytics, and Interactive Visualization into a single platform.
+
+The system allows users to upload public spending datasets or connect to existing government datasets. After processing the data, the platform automatically generates interactive dashboards, visual comparisons, AI-generated summaries, spending forecasts, anomaly alerts, and downloadable reports.
+
+The platform also provides a conversational AI assistant that enables users to ask questions in natural language, such as:
+
+* Which department has the highest expenditure?
+* Compare education spending with healthcare.
+* Show districts with low budget utilization.
+* Predict next year's expenditure trends.
+
+The AI engine converts these questions into meaningful insights, making government financial data significantly easier to understand.
+
+---
+
+# 6. Objectives
+
+The primary objectives of JanDhan Analytics AI are:
+
+* Improve transparency in government spending.
+* Simplify complex public finance datasets.
+* Enable data-driven decision making.
+* Detect unusual expenditure patterns using AI.
+* Forecast future budget utilization.
+* Provide intelligent financial summaries.
+* Increase citizen awareness regarding public expenditure.
+* Support NGOs, researchers, journalists, and policymakers with analytical tools.
+* Encourage open-data adoption and accountability.
+
+---
+# 7. Stakeholders
+
+The following stakeholders are expected to benefit from JanDhan Analytics AI:
+
+## 7.1 Citizens
+
+Citizens can access easy-to-understand dashboards that explain how public funds are allocated and utilized. They can compare spending across departments and districts, ask questions using natural language, and download reports for better understanding of government expenditure.
+
+## 7.2 Non-Governmental Organizations (NGOs)
+
+NGOs can use the platform to monitor government spending related to education, healthcare, rural development, infrastructure, and welfare schemes. The AI-generated insights help them identify underutilized budgets and regions that may require additional attention.
+
+## 7.3 Researchers and Journalists
+
+Researchers and journalists can analyze historical spending patterns, compare budget utilization across multiple departments, identify trends, and detect unusual expenditure using AI-powered analytics.
+
+## 7.4 Government Officials
+
+Government officials can monitor departmental performance, evaluate budget utilization, detect anomalies, and generate analytical reports to support better decision-making.
+
+## 7.5 System Administrator
+
+The administrator manages user accounts, uploads public datasets, maintains the database, monitors AI services, and ensures the overall reliability and security of the platform.
+
+---
+
+# 8. Functional Requirements
+
+The system shall provide the following functionalities.
+
+## 8.1 User Authentication
+
+* Secure user registration and login.
+* JWT-based authentication.
+* Role-based access control.
+* Password encryption.
+* User profile management.
+
+---
+
+## 8.2 Dashboard Module
+
+The system shall provide an interactive dashboard displaying:
+
+* Total Allocated Budget
+* Total Expenditure
+* Budget Utilization Percentage
+* Department-wise Spending
+* District-wise Spending
+* Year-wise Comparison
+* Monthly Spending Trends
+* Key Performance Indicators (KPIs)
+
+---
+
+## 8.3 Data Upload Module
+
+The administrator shall be able to:
+
+* Upload CSV files.
+* Upload Excel files.
+* Validate uploaded datasets.
+* Preview uploaded data.
+* Clean missing values.
+* Store processed data in the database.
+
+---
+
+## 8.4 Analytics Module
+
+The platform shall provide:
+
+* Department-wise analysis
+* District-wise comparison
+* Financial year comparison
+* Budget utilization analysis
+* Interactive charts
+* Filtering by year, department, district, and scheme
+
+---
+
+## 8.5 AI Assistant Module
+
+The AI Assistant shall:
+
+* Answer questions in natural language.
+* Explain charts and visualizations.
+* Summarize financial reports.
+* Compare expenditure between departments.
+* Generate recommendations.
+* Assist users in understanding public spending.
+
+Example Queries:
+
+* Which department spent the highest budget?
+* Compare healthcare spending with education.
+* Show districts with the lowest budget utilization.
+* Which sector received the maximum funding?
+
+---
+
+## 8.6 Machine Learning Module
+
+The ML engine shall provide:
+
+* Spending Forecasting
+* Trend Prediction
+* Budget Utilization Prediction
+* Anomaly Detection
+* Financial Pattern Recognition
+
+---
+
+## 8.7 Report Generation Module
+
+The platform shall allow users to:
+
+* Download PDF reports.
+* Export CSV reports.
+* Generate AI-powered executive summaries.
+* Export charts and visualizations.
+
+---
+
+## 8.8 Search and Filtering
+
+Users shall be able to search and filter data using:
+
+* Department
+* District
+* Financial Year
+* Government Scheme
+* Budget Range
+* Spending Range
+
+---
+
+## 8.9 Notifications
+
+The system shall notify users when:
+
+* New datasets are uploaded.
+* Spending anomalies are detected.
+* Reports are generated.
+* AI analysis is completed.
+
+---
+
+# 9. Non-Functional Requirements
+
+## Performance
+
+* Dashboard should load within three seconds.
+* AI responses should be generated within five seconds.
+* Reports should be generated within ten seconds.
+
+---
+
+## Scalability
+
+The platform should support increasing datasets and users without significant degradation in performance.
+
+---
+
+## Availability
+
+The application should be available 24×7 except during scheduled maintenance.
+
+---
+
+## Security
+
+The system shall ensure:
+
+* Secure authentication
+* Password hashing
+* JWT authorization
+* HTTPS communication
+* Input validation
+* Protection against SQL Injection
+* Protection against Cross-Site Scripting (XSS)
+
+---
+
+## Reliability
+
+The system should provide accurate analytical results and gracefully handle invalid datasets or unexpected errors.
+
+---
+
+## Usability
+
+The user interface should be intuitive, responsive, and accessible to both technical and non-technical users.
+
+---
+
+## Maintainability
+
+The project should follow a modular architecture to simplify debugging, testing, and future feature additions.
+
+---
+
+## Portability
+
+The platform should run on Windows, Linux, and cloud environments using Docker containers.
+
+# 10. User Roles
+
+The system supports multiple user roles to ensure secure access and efficient management of public spending data.
+
+| Role                | Responsibilities                                                                        |
+| ------------------- | --------------------------------------------------------------------------------------- |
+| Citizen             | View dashboards, search data, interact with AI Assistant, download reports              |
+| NGO/Researcher      | Analyze public spending, compare departments, identify spending trends, export reports  |
+| Government Official | Monitor expenditure, review analytics, evaluate department performance                  |
+| Administrator       | Manage users, upload datasets, maintain database, monitor AI services, generate reports |
+
+---
+
+# 11. System Features
+
+JanDhan Analytics AI provides a comprehensive set of features for analyzing public spending data using Artificial Intelligence and Data Analytics.
+
+## 11.1 Interactive Dashboard
+
+The dashboard provides a high-level overview of public expenditure through interactive visualizations.
+
+Features include:
+
+* Total Budget Allocation
+* Total Expenditure
+* Budget Utilization Percentage
+* Department-wise Spending
+* District-wise Spending
+* Financial Year Comparison
+* Interactive Charts
+* KPI Cards
+
+---
+
+## 11.2 AI-Powered Financial Insights
+
+The platform automatically generates easy-to-understand summaries from complex financial datasets.
+
+Example:
+
+> "The Education Department utilized 91% of its allocated budget, while the Health Department utilized only 64%, indicating possible implementation delays."
+
+---
+
+## 11.3 Natural Language Query
+
+Users can ask questions in plain English without writing SQL queries.
+
+Examples:
+
+* Which district received the highest education budget?
+* Compare road spending between 2024 and 2025.
+* Show departments with less than 60% budget utilization.
+* Which department spent the most this year?
+
+---
+
+## 11.4 Budget Forecasting
+
+The Machine Learning model predicts future expenditure trends using historical financial data.
+
+Outputs include:
+
+* Estimated future spending
+* Budget utilization prediction
+* Department growth trends
+
+---
+
+## 11.5 Spending Anomaly Detection
+
+Artificial Intelligence continuously analyzes expenditure records and highlights unusual spending behavior.
+
+Examples:
+
+* Sudden increase in departmental expenditure
+* Unexpected decrease in budget utilization
+* Unusual monthly spending patterns
+
+---
+
+## 11.6 Advanced Analytics
+
+The platform provides:
+
+* Department Comparison
+* District Comparison
+* Scheme-wise Analysis
+* Year-wise Analysis
+* Budget Utilization Trends
+* Financial Performance Reports
+
+---
+
+## 11.7 Report Generation
+
+Users can generate professional reports containing:
+
+* Executive Summary
+* Spending Charts
+* AI Insights
+* Budget Statistics
+* Forecast Results
+* Recommendations
+
+Reports can be downloaded in PDF and CSV formats.
+
+---
+
+## 11.8 Secure Authentication
+
+The platform implements secure authentication using JWT-based authorization and encrypted passwords to protect user data.
+
+---
+
+## 11.9 Responsive Design
+
+The application is fully responsive and optimized for:
+
+* Desktop
+* Laptop
+* Tablet
+* Mobile Devices
+
+---
+
+# 12. Assumptions
+
+The following assumptions have been made during the development of JanDhan Analytics AI:
+
+* Government expenditure datasets are publicly available.
+* Uploaded datasets follow a structured format.
+* Internet connectivity is available during system usage.
+* Users possess basic knowledge of operating a web application.
+* Public financial data is authentic and legally accessible.
+* AI-generated insights are intended to support analysis and should not replace official government audits or financial decisions.
+
+---
+
+# 13. Constraints
+
+The project is subject to the following constraints:
+
+* The accuracy of AI insights depends on the quality of the uploaded data.
+* Budget forecasts are based on historical patterns and may not reflect unexpected policy changes.
+* The system does not modify government financial records.
+* Large datasets may require additional processing time.
+* Availability of historical datasets may vary across government departments.
+* The platform currently supports structured datasets such as CSV and Excel files.
+
+---
+
+# 14. Future Scope
+
+JanDhan Analytics AI has significant potential for future expansion.
+
+Future enhancements may include:
+
+* Integration with the Open Government Data (OGD) Platform.
+* Real-time budget monitoring dashboards.
+* State-wise and national expenditure comparisons.
+* Voice-enabled AI Assistant.
+* Multilingual support for Indian languages.
+* GIS-based visualization of district-wise spending.
+* Fraud risk scoring using advanced Machine Learning models.
+* AI-powered policy recommendation engine.
+* Mobile application for Android and iOS.
+* Public API for researchers and third-party developers.
+* Blockchain integration for enhanced transparency and auditability.
+* Automated alerts for budget overruns and underutilization.
+
+---
+
+# Conclusion
+
+JanDhan Analytics AI aims to simplify public financial data through Artificial Intelligence, Machine Learning, and interactive analytics. The platform enables citizens, NGOs, researchers, journalists, and government officials to understand public expenditure with greater clarity, promoting transparency, accountability, and data-driven governance.
+
+By combining intelligent dashboards, predictive analytics, anomaly detection, and natural language interaction, the platform contributes to a more informed and transparent public financial ecosystem.
