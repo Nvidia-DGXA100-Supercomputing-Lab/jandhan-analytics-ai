@@ -1,0 +1,147 @@
+JanDhan-Analytics-AI/
+│
+├── README.md
+├── LICENSE
+├── .gitignore
+├── docker-compose.yml
+├── .env.example
+│
+├── docs/                              # Project Documentation
+│   ├── SRS.pdf
+│   ├── Architecture.md
+│   ├── API_Documentation.md
+│   ├── Database_Design.md
+│   ├── ML_Workflow.md
+│   ├── User_Guide.md
+│   ├── Deployment_Guide.md
+│   └── Images/
+│
+├── frontend/                          # Next.js Frontend
+│   ├── public/
+│   │
+│   ├── src/
+│   │   ├── app/
+│   │   │
+│   │   ├── components/
+│   │   │   ├── Navbar/
+│   │   │   ├── Sidebar/
+│   │   │   ├── Cards/
+│   │   │   ├── Charts/
+│   │   │   ├── Tables/
+│   │   │   ├── Chatbot/
+│   │   │   ├── Map/
+│   │   │   └── Common/
+│   │   │
+│   │   ├── pages/
+│   │   │   ├── Dashboard/
+│   │   │   ├── Analytics/
+│   │   │   ├── AI-Assistant/
+│   │   │   ├── Forecasting/
+│   │   │   ├── Reports/
+│   │   │   ├── Login/
+│   │   │   └── Settings/
+│   │   │
+│   │   ├── services/
+│   │   ├── hooks/
+│   │   ├── context/
+│   │   ├── utils/
+│   │   ├── types/
+│   │   └── styles/
+│   │
+│   ├── package.json
+│   └── next.config.js
+│
+├── backend/                           # FastAPI Backend
+│   ├── app/
+│   │
+│   │   ├── api/
+│   │   │   ├── routes/
+│   │   │   │   ├── auth.py
+│   │   │   │   ├── dashboard.py
+│   │   │   │   ├── analytics.py
+│   │   │   │   ├── upload.py
+│   │   │   │   ├── reports.py
+│   │   │   │   ├── chatbot.py
+│   │   │   │   └── prediction.py
+│   │   │
+│   │   ├── core/
+│   │   │   ├── config.py
+│   │   │   ├── security.py
+│   │   │   └── logger.py
+│   │   │
+│   │   ├── database/
+│   │   │   ├── database.py
+│   │   │   ├── models.py
+│   │   │   └── schemas.py
+│   │   │
+│   │   ├── services/
+│   │   │   ├── analytics_service.py
+│   │   │   ├── report_service.py
+│   │   │   ├── upload_service.py
+│   │   │   ├── ai_service.py
+│   │   │   └── prediction_service.py
+│   │   │
+│   │   ├── utils/
+│   │   ├── middleware/
+│   │   └── main.py
+│   │
+│   ├── requirements.txt
+│   └── Dockerfile
+│
+├── ai_engine/                         # AI & ML Modules
+│   ├── chatbot/
+│   │   ├── prompt.py
+│   │   ├── llm.py
+│   │   └── rag.py
+│   │
+│   ├── anomaly_detection/
+│   │   ├── train.py
+│   │   ├── predict.py
+│   │   └── model.pkl
+│   │
+│   ├── forecasting/
+│   │   ├── train.py
+│   │   ├── predict.py
+│   │   └── model.pkl
+│   │
+│   ├── summarizer/
+│   │
+│   ├── recommendation/
+│   │
+│   └── preprocessing/
+│
+├── database/
+│   ├── schema.sql
+│   ├── seed_data.sql
+│   └── migrations/
+│
+├── datasets/
+│   ├── raw/
+│   ├── processed/
+│   └── sample_data/
+│
+├── notebooks/                         # Data Analysis
+│   ├── EDA.ipynb
+│   ├── Forecasting.ipynb
+│   └── Anomaly.ipynb
+│
+├── reports/
+│   ├── generated_reports/
+│   └── exports/
+│
+├── assets/
+│   ├── logo/
+│   ├── icons/
+│   ├── screenshots/
+│   └── banners/
+│
+├── tests/
+│   ├── frontend/
+│   ├── backend/
+│   └── ai/
+│
+└── deployment/
+    ├── Docker/
+    ├── Nginx/
+    ├── AWS/
+    └── Render/
