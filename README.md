@@ -1,579 +1,324 @@
-Perfect. This is exactly the kind of project that can become the **best project on your resume** if we build it properly.
+<div align="center">
 
-Since I know your goal is:
+# 📊 JanDhan Analytics AI
 
-* ✅ Crack internships
-* ✅ Build an impressive GitHub
-* ✅ Learn Full Stack + AI
-* ✅ Have a project that stands out in hackathons
+### AI-Powered Public Spending Transparency Platform
 
-We're **not** going to build a simple dashboard. We'll build a product.
+Transforming government expenditure data into meaningful insights using Artificial Intelligence, Machine Learning, and Interactive Dashboards.
 
----
+![License](https://img.shields.io/badge/License-MIT-green)
+![Python](https://img.shields.io/badge/Python-3.12-blue)
+![FastAPI](https://img.shields.io/badge/FastAPI-Latest-009688)
+![Next.js](https://img.shields.io/badge/Next.js-15-black)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-blue)
+![Status](https://img.shields.io/badge/Status-Under%20Development-orange)
 
-# Project Name
-
-We'll give it a professional name.
-
-**PublicLens AI**
-
-> *AI-Powered Public Spending Transparency Platform*
-
-or
-
-**NitiLens AI**
-
-or
-
-**FundFlow AI**
-
-I personally like **PublicLens AI**.
+</div>
 
 ---
 
-# Final Vision
+# 📖 Overview
 
-Imagine opening the website.
+**JanDhan Analytics AI** is an AI-powered CivicTech platform designed to improve transparency and accountability in government spending. The platform transforms complex public expenditure datasets into interactive dashboards, AI-generated insights, predictive analytics, and intelligent reports.
 
-```
-------------------------------------------------------
-
-                PublicLens AI
-
-Making Government Spending Transparent
-
-------------------------------------------------------
-
-🏠 Dashboard
-
-📊 Analytics
-
-🤖 Ask AI
-
-📈 Predictions
-
-🚨 Anomaly Detection
-
-📄 Reports
-
-------------------------------------------------------
-```
+It enables citizens, NGOs, researchers, and government officials to explore and understand how public funds are allocated and utilized.
 
 ---
 
-Now let's see what every page will do.
+# 🎯 Problem Statement
 
-# Home Dashboard
+Government expenditure data is often available as large spreadsheets or reports, making it difficult for citizens and organizations to analyze.
 
-Immediately user sees
+JanDhan Analytics AI solves this challenge by providing:
 
-```
-Total Budget
-
-₹1240 Crores
-```
-
-```
-Total Spent
-
-₹1115 Crores
-```
-
-```
-Budget Utilization
-
-89%
-```
-
-```
-Departments
-
-18
-```
-
-```
-Districts
-
-75
-```
-
-Then
-
-Beautiful graphs
-
-✔ Budget Distribution
-
-✔ Monthly Spending
-
-✔ Department Comparison
-
-✔ District Comparison
+- 📊 Interactive Dashboards
+- 🤖 AI-powered Financial Insights
+- 📈 Budget Forecasting
+- 🚨 Spending Anomaly Detection
+- 💬 Conversational AI Assistant
+- 📄 Automated Reports
 
 ---
 
-# Analytics Page
+# ✨ Features
 
-This page contains
+- Interactive Public Spending Dashboard
+- Department-wise Analytics
+- District-wise Analytics
+- Budget Utilization Tracking
+- AI-generated Financial Insights
+- Natural Language AI Assistant
+- Budget Forecasting
+- Spending Anomaly Detection
+- Smart Report Generation
+- CSV & Excel Dataset Upload
+- JWT Authentication
+- Role-Based Access Control
+- Responsive UI
+- REST API
+- Docker Support
 
-Department-wise Spending
+---
 
-```
-Education
+# 🏗️ System Architecture
 
-Allocated
-
-120 Cr
-
-Spent
-
-110 Cr
-
-91%
-```
-
-Health
-
-```
-Allocated
-
-90 Cr
-
-Spent
-
-58 Cr
-
-64%
-```
-
-Roads
-
-```
-Allocated
-
-250 Cr
-
-Spent
-
-245 Cr
+```text
+                Users
+                  │
+                  ▼
+          Next.js Frontend
+                  │
+             REST API
+                  │
+                  ▼
+           FastAPI Backend
+                  │
+      ┌───────────┴───────────┐
+      ▼                       ▼
+ PostgreSQL Database      AI Engine
+                                │
+             ┌──────────────────┴─────────────────┐
+             ▼                  ▼                 ▼
+      Gemini API         Forecasting      Anomaly Detection
 ```
 
 ---
 
-District Comparison
-
-```
-Lucknow
-
-95%
-
-Kanpur
-
-82%
-
-Agra
-
-61%
-
-Noida
-
-91%
-```
-
----
-
-Heatmap
-
-Where is most money spent?
-
----
-
-# AI Assistant Page
-
-This is where the AI shines.
-
-There is a chatbot.
-
-User asks
-
-> Which department is underutilizing its budget?
-
-AI
-
-> The Health Department has utilized only 63% of its allocated budget.
-
----
-
-User
-
-> Show top 5 districts.
-
-AI responds
-
-Charts
-
-Tables
-
-Summary
-
----
-
-User
-
-> Compare education spending with healthcare.
-
-AI creates comparison instantly.
-
----
-
-# Prediction Page
-
-Machine Learning
-
-Predict future spending.
-
-```
-Road Department
-
-Current Trend
-
-Likely to exceed budget
-
-October 2026
-```
-
----
-
-Education
-
-```
-Likely to remain under budget.
-```
-
----
-
-# Anomaly Detection
-
-This is the coolest feature.
-
-AI detects
-
-```
-Road Spending
-
-Normal
-
-₹8 Cr
-
-Current
-
-₹46 Cr
-
-⚠ Unusual Spending
-```
-
----
-
-Health
-
-```
-Missing Records
-
-⚠ Data Incomplete
-```
-
----
-
-Water
-
-```
-Budget suddenly reduced by 60%
-
-⚠ Review Needed
-```
-
----
-
-# Reports Page
-
-Download
-
-PDF
-
-Excel
-
-AI Summary
-
-Example
-
-```
-Budget Report
-
-Total Budget
-
-₹1240 Cr
-
-Spent
-
-₹1115 Cr
-
-Unused
-
-₹125 Cr
-
-Top Department
-
-Education
-
-Lowest
-
-Health
-
-Recommendations
-
-Increase monitoring of Health Department.
-```
-
----
-
-# Admin Panel
-
-Government officer uploads
-
-CSV
-
-↓
-
-AI cleans data
-
-↓
-
-Stores into PostgreSQL
-
-↓
-
-Dashboard updates automatically
-
----
-
-# AI Features
-
-This is where you'll score marks.
-
-## 1️⃣ Natural Language Query
-
-User types
-
-```
-Show road spending in Lucknow
-```
-
-AI understands.
-
----
-
-## 2️⃣ AI Summary
-
-Instead of charts
-
-AI explains everything.
-
----
-
-## 3️⃣ Forecasting
-
-Future spending prediction.
-
----
-
-## 4️⃣ Anomaly Detection
-
-Detect unusual expenditure.
-
----
-
-## 5️⃣ Recommendation Engine
-
-Example
-
-```
-Education utilization is high.
-
-Increase next year's budget by 10%.
-```
-
----
-
-## 6️⃣ Smart Search
-
-User
-
-```
-Find all schemes spending above 200 Crores.
-```
-
----
-
-# Tech Stack
+# 🛠️ Tech Stack
 
 ## Frontend
 
-* React
-* Next.js
-* Tailwind CSS
-* Chart.js
-* Leaflet (Maps)
-
----
+- Next.js
+- React
+- Tailwind CSS
+- Recharts
 
 ## Backend
 
-* FastAPI
+- FastAPI
+- SQLAlchemy
+- Alembic
+
+## Database
+
+- PostgreSQL
+
+## AI / ML
+
+- Google Gemini API
+- Pandas
+- NumPy
+- Scikit-learn
+
+## DevOps
+
+- Docker
+- Git
+- GitHub
+
+---
+
+# 📂 Project Structure
+
+```text
+JanDhan-Analytics-AI/
+
+├── backend/
+├── frontend/
+├── database/
+├── datasets/
+├── docs/
+├── deployment/
+├── tests/
+├── docker-compose.yml
+├── README.md
+└── LICENSE
+```
+
+---
+
+# 🚀 Getting Started
+
+## Clone Repository
+
+```bash
+git clone https://github.com/YOUR_USERNAME/JanDhan-Analytics-AI.git
+
+cd JanDhan-Analytics-AI
+```
+
+---
+
+## Backend Setup
+
+```bash
+cd backend
+
+python -m venv venv
+
+venv\Scripts\activate
+
+pip install -r requirements.txt
+```
+
+Run backend
+
+```bash
+uvicorn app.main:app --reload
+```
+
+---
+
+## Frontend Setup
+
+```bash
+cd frontend
+
+npm install
+
+npm run dev
+```
 
 ---
 
 ## Database
 
-* PostgreSQL
-
----
-
-## AI
-
-* Pandas
-* NumPy
-* Scikit-learn
-* Isolation Forest
-* Prophet (Forecasting)
-
----
-
-## LLM
-
-Gemini API
-
----
-
-## Authentication
-
-JWT
-
----
-
-## Deployment
-
-Docker
-
-AWS
-
----
-
-# Folder Structure
-
+```sql
+CREATE DATABASE jandhan_ai;
 ```
-PublicLensAI/
 
-frontend/
+Run migrations
 
-backend/
-
-ml/
-
-datasets/
-
-reports/
-
-docs/
-
-screenshots/
-
-README.md
+```bash
+alembic upgrade head
 ```
 
 ---
 
-# Development Roadmap (12 Phases)
+# 📊 Modules
 
-### ✅ Phase 1 – Project Planning (Today)
-
-* Finalize features
-* Design architecture
-* Collect dataset
-* Design UI
-
-### Phase 2 – UI/UX
-
-* Figma design
-* React setup
-* Dashboard layout
-
-### Phase 3 – Backend
-
-* FastAPI
-* PostgreSQL
-* REST APIs
-
-### Phase 4 – Data Pipeline
-
-* CSV upload
-* Cleaning
-* Validation
-
-### Phase 5 – Dashboard
-
-* Charts
-* KPIs
-* Filters
-
-### Phase 6 – AI Chat
-
-* Gemini integration
-* Natural-language questions
-
-### Phase 7 – ML
-
-* Forecasting
-* Anomaly detection
-
-### Phase 8 – Reports
-
-* PDF generation
-* CSV export
-
-### Phase 9 – Authentication
-
-* Admin login
-* Role-based access
-
-### Phase 10 – Deployment
-
-### Phase 11 – Documentation
-
-### Phase 12 – NGO Demo
+- Authentication
+- Dashboard
+- Analytics
+- AI Assistant
+- Budget Forecasting
+- Anomaly Detection
+- Reports
+- Dataset Upload
+- Admin Panel
 
 ---
 
-# One more thing...
+# 👥 User Roles
 
-I don't want this to look like a college assignment.
+### Citizen
 
-I want it to look like a **startup product**.
+- View Dashboard
+- Ask AI Questions
+- Download Reports
 
-We'll make it so polished that if someone sees your GitHub, they'll think:
+### NGO / Researcher
 
-> "This is something that could actually be used by a district administration or an NGO."
+- Analyze Spending
+- Compare Departments
+- Export Reports
 
-## 🚀 Step 1 (Today's Task)
+### Government Official
 
-Before writing any code, we'll do what professional software teams do: **design the system**.
+- Monitor Budgets
+- Review Analytics
+- Generate Reports
 
-We'll create:
+### Administrator
 
-1. **Software Requirements Specification (SRS)**.
-2. **System Architecture Diagram**.
-3. **Database Schema (ER Diagram)**.
-4. **API Design**.
-5. **Figma UI Design**.
-6. **Project folder structure**.
-7. **Development milestones**.
+- Upload Datasets
+- Manage Users
+- Configure AI
 
-Once this foundation is ready, coding becomes much smoother and the project will stay organized from start to finish. I recommend we follow this process rather than jumping straight into code.
+---
+
+# 📸 Screenshots
+
+Screenshots will be added after frontend development.
+
+```
+docs/Images/
+```
+
+---
+
+# 📚 Documentation
+
+| Document | Description |
+|----------|-------------|
+| SRS | Software Requirement Specification |
+| Architecture | System Architecture |
+| Database Design | Database Schema |
+| API Documentation | REST APIs |
+| ML Workflow | Machine Learning Pipeline |
+| User Guide | End User Documentation |
+| Deployment Guide | Setup Instructions |
+| Security | Security Practices |
+| Testing | Testing Strategy |
+
+---
+
+# 🗺️ Roadmap
+
+- [x] Project Planning
+- [x] Documentation
+- [ ] UI Design
+- [ ] Backend Development
+- [ ] Frontend Development
+- [ ] AI Integration
+- [ ] Testing
+- [ ] Deployment
+
+---
+
+# 🤝 Contributing
+
+Contributions are welcome!
+
+Please read:
+
+```
+docs/Contributing.md
+```
+
+before creating a Pull Request.
+
+---
+
+# 📄 License
+
+This project is licensed under the MIT License.
+
+---
+
+# 🙏 Acknowledgements
+
+- Open Government Data (OGD)
+- FastAPI
+- Next.js
+- PostgreSQL
+- Google Gemini API
+- Scikit-learn
+
+---
+
+# 📬 Contact
+
+**Developer:** Ankit Singh Tomar
+
+GitHub: https://github.com/YOUR_USERNAME
+
+Email: your-email@example.com
+
+---
+
+<div align="center">
+
+⭐ If you found this project useful, consider giving it a star!
+
+</div>
