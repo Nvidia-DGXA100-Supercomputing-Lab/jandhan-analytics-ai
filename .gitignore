@@ -1,32 +1,42 @@
-# Dependencies
-node_modules/
-backend/venv/
-venv/
-.env/
-.env.local
-.env.example is intentionally tracked
+# dependencies
+frontend/node_modules
+frontend/.next
+frontend/out
 
-# Python
-__pycache__/
-*.py[cod]
-*.egg-info/
+# environment
+frontend/.env.local
+frontend/.env.development.local
+frontend/.env.test.local
+frontend/.env.production.local
+
+# logs
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+
+# misc
+frontend/.DS_Store
+frontend/.idea
+frontend/.vscode
+*~
+
+# python
+__pycache__
+*.pyc
+*.pyo
+*.pyd
 .Python
+env
+venv
+.venv
 
-# Build / generated
-.next/
-out/
-build/
-dist/
-*.db
+# database
 *.sqlite
-*.sqlite3
+*.db
 
-# Editor / OS
-.DS_Store
-Thumbs.db
-*.swp
-.idea/
-.vscode/
+# ai engine models
+ai_engine/**/*.pkl
+ai_engine/**/*.pkl
 
-# Logs
-*.log
+# notebooks
+.ipynb_checkpoints
