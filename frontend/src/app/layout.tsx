@@ -1,11 +1,4 @@
-import type { Metadata } from "next";
-import "./globals.css";
-
-export const metadata: Metadata = {
-  title: "JanDhan Analytics AI",
-  description:
-    "AI-Powered Public Spending Transparency Platform",
-};
+import DashboardLayout from "@/app/dashboard/layout";
 
 export default function RootLayout({
   children,
