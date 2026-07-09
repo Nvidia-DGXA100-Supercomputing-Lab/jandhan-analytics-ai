@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import LineChartComponent from "@/components/Charts/AreaChartComponent";
+import AreaChartComponent from "@/components/Charts/AreaChartComponent";
 import { TrendingUp, Calendar, Target } from "lucide-react";
 
 const forecastData = [
@@ -56,7 +56,7 @@ export default function ForecastingPage() {
         <h3 className="text-lg font-semibold text-slate-900 mb-4">
           6-Month Spending Forecast
         </h3>
-        <LineChartComponent data={forecastData} color="#3b82f6" height={400} />
+        <AreaChartComponent data={forecastData} color="#3b82f6" height={400} />
       </div>
     </div>
   );

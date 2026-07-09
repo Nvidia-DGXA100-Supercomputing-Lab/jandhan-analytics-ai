@@ -10,7 +10,7 @@ export default function Navbar() {
   const [showNotifications, setShowNotifications] = useState(false);
 
   const getPageTitle = () => {
-    const segments = pathname.split("/").filter(Boolean);
+    const segments = (pathname || "").split("/").filter(Boolean);
     if (segments.length === 0) return "Dashboard";
     return segments[0]
       .split("-")

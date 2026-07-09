@@ -23,18 +23,34 @@ async function request<T>(
   return res.json();
 }
 
+export interface ChatResponse {
+  response?: string;
+  message?: string;
+}
+
+export interface LoginResponse {
+  access_token: string;
+}
+
+export interface DashboardResponse {
+  total_spending?: string;
+  active_schemes?: string;
+  beneficiaries?: string;
+  transparency_score?: string;
+}
+
 export const api = {
   login: (credentials: { email: string; password: string }) =>
-    request<{ access_token: string }>("/auth/login", {
+    request<LoginResponse>("/auth/login", {
       method: "POST",
       body: JSON.stringify(credentials),
     }),
 
-  getDashboard: () => request("/dashboard/"),
+  getDashboard: () => request<DashboardResponse>("/dashboard/"),
   getAnalytics: () => request("/analytics/"),
   getTransactions: () => request("/transactions/"),
   chat: (message: string) =>
-    request("/chatbot/chat", {
+    request<ChatResponse>("/chatbot/chat", {
       method: "POST",
       body: JSON.stringify({ message }),
     }),
