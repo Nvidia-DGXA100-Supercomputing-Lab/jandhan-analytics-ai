@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Send, Bot, User } from "lucide-react";
+import { Send, Bot, User, Loader2 } from "lucide-react";
+import { api } from "@/services/api";
 
 interface Message {
   role: "user" | "assistant";
@@ -16,28 +17,33 @@ export default function AIAssistantPage() {
     },
   ]);
   const [input, setInput] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!input.trim()) return;
+    if (!input.trim() || isLoading) return;
 
     const userMessage: Message = { role: "user", content: input };
     setMessages((prev) => [...prev, userMessage]);
     setInput("");
+    setIsLoading(true);
 
-    setTimeout(() => {
-      const responses = [
-        "I can help you analyze spending patterns across different departments.",
-        "Based on the current data, the health sector shows 12% growth this quarter.",
-        "I've detected 3 anomalies in the Q3 financial data that require your attention.",
-        "The transparency score has improved by 3% compared to last month.",
-      ];
+    try {
+      const data = await api.chat(input);
       const assistantMessage: Message = {
         role: "assistant",
-        content: responses[Math.floor(Math.random() * responses.length)],
+        content: data.response || data.message || "I'm sorry, I couldn't process that request.",
       };
       setMessages((prev) => [...prev, assistantMessage]);
-    }, 1000);
+    } catch {
+      const errorMessage: Message = {
+        role: "assistant",
+        content: "I'm having trouble connecting to the server. Please try again later.",
+      };
+      setMessages((prev) => [...prev, errorMessage]);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -72,6 +78,16 @@ export default function AIAssistantPage() {
               )}
             </div>
           ))}
+          {isLoading && (
+            <div className="flex gap-3 justify-start">
+              <div className="w-8 h-8 bg-primary-100 rounded-full flex items-center justify-center flex-shrink-0">
+                <Bot size={18} className="text-primary-600" />
+              </div>
+              <div className="bg-slate-100 text-slate-900 rounded-lg p-4">
+                <Loader2 size={18} className="animate-spin" />
+              </div>
+            </div>
+          )}
         </div>
       </div>
 
@@ -82,10 +98,12 @@ export default function AIAssistantPage() {
           onChange={(e) => setInput(e.target.value)}
           placeholder="Ask about spending, schemes, or analytics..."
           className="flex-1 px-4 py-3 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500"
+          disabled={isLoading}
         />
         <button
           type="submit"
-          className="px-6 py-3 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors flex items-center gap-2"
+          disabled={isLoading}
+          className="px-6 py-3 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
         >
           <Send size={18} />
           Send
