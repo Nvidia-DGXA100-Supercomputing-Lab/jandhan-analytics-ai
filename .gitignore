@@ -1,0 +1,42 @@
+# dependencies
+frontend/node_modules
+frontend/.next
+frontend/out
+
+# environment
+frontend/.env.local
+frontend/.env.development.local
+frontend/.env.test.local
+frontend/.env.production.local
+
+# logs
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+
+# misc
+frontend/.DS_Store
+frontend/.idea
+frontend/.vscode
+*~
+
+# python
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+env
+venv
+.venv
+
+# database
+*.sqlite
+*.db
+
+# ai engine models
+ai_engine/**/*.pkl
+ai_engine/**/*.pkl
+
+# notebooks
+.ipynb_checkpoints
