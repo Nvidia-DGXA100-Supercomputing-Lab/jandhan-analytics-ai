@@ -2,6 +2,7 @@
 node_modules/
 backend/venv/
 venv/
+.env
 .env/
 .env.local
 .env.example is intentionally tracked
