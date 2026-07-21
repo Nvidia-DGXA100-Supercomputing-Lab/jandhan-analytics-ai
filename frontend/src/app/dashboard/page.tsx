@@ -8,7 +8,7 @@ import { Card } from "@/components/ui/Card";
 import { Loading } from "@/components/ui/Loading";
 import { useApi } from "@/hooks/useApi";
 import { dashboardApi } from "@/lib/api";
-import { TrendChart } from "@/components/charts/TrendChart";
+import { TrendChart } from "@/components/Charts/TrendChart";
 import { DataTable } from "@/components/tables/DataTable";
 import { DollarSign, FileText, Users, Clock } from "lucide-react";
 import type { DashboardData, Transaction } from "@/types";

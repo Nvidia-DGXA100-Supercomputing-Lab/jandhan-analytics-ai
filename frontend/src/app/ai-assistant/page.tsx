@@ -32,7 +32,7 @@ export default function AIAssistantPage() {
       const data = await api.chat(input);
       const assistantMessage: Message = {
         role: "assistant",
-        content: data.response || data.message || "I'm sorry, I couldn't process that request.",
+        content: data.content || data.message || "I'm sorry, I couldn't process that request.",
       };
       setMessages((prev) => [...prev, assistantMessage]);
     } catch {

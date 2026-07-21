@@ -152,7 +152,7 @@ function ReportsContent() {
               <tbody>
                 {reports.map((report) => (
                   <tr key={report.id} className="border-b border-gray-100 dark:border-slate-700 hover:bg-gray-50 dark:hover:bg-slate-800">
-                    <td className="px-4 py-3 text-gray-900 dark:text-white font-medium">{report.title || report.name}</td>
+                    <td className="px-4 py-3 text-gray-900 dark:text-white font-medium">{report.name}</td>
                     <td className="px-4 py-3 text-gray-700 dark:text-slate-300 capitalize">{report.type}</td>
                     <td className="px-4 py-3 text-gray-700 dark:text-slate-300">{formatDate(report.date || report.created_at)}</td>
                     <td className="px-4 py-3 text-gray-700 dark:text-slate-300">{report.size || "—"}</td>

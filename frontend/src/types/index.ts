@@ -31,7 +31,9 @@ export interface RegisterRequest {
 
 export interface AuthResponse {
   user: User;
-  token: Token;
+  access_token: string;
+  refresh_token: string;
+  token_type: string;
 }
 
 export interface Transaction {
@@ -59,11 +61,13 @@ export interface Scheme {
 
 export interface Report {
   id: string;
-  title: string;
+  name: string;
   type: string;
-  generated_at: string;
-  file_url: string;
+  date: string;
+  size: string;
+  url?: string;
   status: string;
+  created_at: string;
 }
 
 export interface DashboardData {
@@ -95,7 +99,7 @@ export interface ChatMessage {
   role: "user" | "assistant";
   content: string;
   timestamp: string;
-  sources?: Array<{ title: string; url: string }>;
+  sources?: Array<{ title: string; content: string }>;
 }
 
 export interface Anomaly {
@@ -112,6 +116,14 @@ export interface Anomaly {
 export interface ApiError {
   detail: string;
   status?: number;
+}
+
+export interface StatCardProps {
+  title: string;
+  value: string | number;
+  change?: string;
+  icon?: React.ReactNode;
+  trend?: "up" | "down" | "neutral";
 }
 
 export type UserRole = "admin" | "official" | "auditor" | "citizen";

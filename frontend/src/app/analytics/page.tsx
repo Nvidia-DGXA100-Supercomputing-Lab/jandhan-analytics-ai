@@ -7,8 +7,8 @@ import { Card } from "@/components/ui/Card";
 import { Loading } from "@/components/ui/Loading";
 import { useApi } from "@/hooks/useApi";
 import { analyticsApi } from "@/lib/api";
-import { SpendingChart } from "@/components/charts/SpendingChart";
-import { TrendChart } from "@/components/charts/TrendChart";
+import { SpendingChart } from "@/components/Charts/SpendingChart";
+import { TrendChart } from "@/components/Charts/TrendChart";
 import { DollarSign, BarChart3, PieChart, TrendingUp } from "lucide-react";
 import type { AnalyticsData } from "@/types";
 
