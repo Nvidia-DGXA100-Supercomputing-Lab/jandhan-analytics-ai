@@ -1,0 +1,42 @@
+- generic [ref=f1e1]:
+  - generic [active]:
+    - generic [ref=f1e4]:
+      - generic [ref=f1e5]:
+        - navigation [ref=f1e7]:
+          - button [disabled] [ref=f1e8]:
+            - img "previous" [ref=f1e9]
+          - generic [ref=f1e11]:
+            - generic [ref=f1e12]: 1/
+            - text: "1"
+          - button [disabled] [ref=f1e13]:
+            - img "next" [ref=f1e14]
+        - link "Next.js 16.2.10 (stale) Turbopack" [ref=f1e17] [cursor=pointer]:
+          - /url: https://nextjs.org/docs/messages/version-staleness
+          - generic "There is a newer version (16.2.11) available, upgrade recommended!" [ref=f1e20]: Next.js 16.2.10 (stale)
+          - generic [ref=f1e21]: Turbopack
+      - dialog "Runtime Error" [ref=f1e23]:
+        - generic [ref=f1e27]:
+          - generic [ref=f1e28]:
+            - generic [ref=f1e29]: Runtime Error
+            - generic [ref=f1e31]:
+              - button "Copy Error Info" [ref=f1e32] [cursor=pointer]
+              - button "No related documentation found" [disabled] [ref=f1e35]
+              - button "Attach Node.js inspector" [ref=f1e38] [cursor=pointer]
+          - generic [ref=f1e47]: useAuth must be used within an AuthProvider
+        - generic [ref=f1e49]: "1"
+        - generic [ref=f1e50]: "2"
+    - generic [ref=f1e55] [cursor=pointer]:
+      - button "Open Next.js Dev Tools" [ref=f1e56]
+      - generic [ref=f1e60]:
+        - button "Open issues overlay" [ref=f1e61]:
+          - generic [ref=f1e62]:
+            - generic [ref=f1e63]: "0"
+            - generic [ref=f1e64]: "1"
+          - generic [ref=f1e65]: Issue
+        - button "Collapse issues badge" [ref=f1e66]
+  - generic [ref=f1e70]:
+    - heading "This page couldn’t load" [level=1] [ref=f1e73]
+    - paragraph [ref=f1e74]: Reload to try again, or go back.
+    - generic [ref=f1e75]:
+      - button "Reload" [ref=f1e77] [cursor=pointer]
+      - button "Back" [ref=f1e78] [cursor=pointer]
