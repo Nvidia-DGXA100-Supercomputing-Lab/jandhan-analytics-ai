@@ -57,8 +57,8 @@ function ForecastingContent() {
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-2xl font-bold text-gray-900">Forecasting</h2>
-        <p className="mt-1 text-sm text-gray-500">AI-powered spending predictions and trends</p>
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Forecasting</h2>
+        <p className="mt-1 text-sm text-gray-500 dark:text-slate-400">AI-powered spending predictions and trends</p>
       </div>
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -69,8 +69,8 @@ function ForecastingContent() {
                 <kpi.icon className="h-6 w-6" />
               </div>
               <div>
-                <p className="text-sm text-gray-500">{kpi.label}</p>
-                <p className="text-xl font-bold text-gray-900">{kpi.value}</p>
+                <p className="text-sm text-gray-500 dark:text-slate-400">{kpi.label}</p>
+                <p className="text-xl font-bold text-gray-900 dark:text-white">{kpi.value}</p>
               </div>
             </div>
           </Card>
@@ -82,11 +82,11 @@ function ForecastingContent() {
           <div className="h-[350px] w-full">
             <ResponsiveContainer width="100%" height="100%">
               <LineChart data={data.predictions} margin={{ top: 5, right: 20, left: 0, bottom: 5 }}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
-                <XAxis dataKey="date" tick={{ fontSize: 12, fill: "#6b7280" }} />
-                <YAxis tick={{ fontSize: 12, fill: "#6b7280" }} />
+                <CartesianGrid strokeDasharray="3 3" stroke={document.documentElement.classList.contains("dark") ? "#334155" : "#e5e7eb"} />
+                <XAxis dataKey="date" tick={{ fontSize: 12, fill: document.documentElement.classList.contains("dark") ? "#cbd5e1" : "#6b7280" }} />
+                <YAxis tick={{ fontSize: 12, fill: document.documentElement.classList.contains("dark") ? "#cbd5e1" : "#6b7280" }} />
                 <Tooltip
-                  contentStyle={{ borderRadius: "0.5rem", border: "1px solid #e5e7eb" }}
+                  contentStyle={{ borderRadius: "0.5rem", border: "1px solid #e5e7eb", backgroundColor: document.documentElement.classList.contains("dark") ? "#1e293b" : "#fff", color: document.documentElement.classList.contains("dark") ? "#fff" : "#000" }}
                   formatter={(value: number) => [`₹${value.toLocaleString()}`, ""]}
                 />
                 <Line type="monotone" dataKey="upper_bound" stroke="#93c5fd" strokeWidth={1} strokeDasharray="5 5" dot={false} name="Upper Bound" />
@@ -96,7 +96,7 @@ function ForecastingContent() {
             </ResponsiveContainer>
           </div>
         ) : (
-          <p className="text-sm text-gray-500">No forecast data available</p>
+          <p className="text-sm text-gray-500 dark:text-slate-400">No forecast data available</p>
         )}
       </Card>
     </div>
