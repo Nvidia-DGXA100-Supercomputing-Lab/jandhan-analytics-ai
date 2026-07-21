@@ -67,13 +67,14 @@ export interface Report {
 }
 
 export interface DashboardData {
+  total_spending: number;
   total_schemes: number;
-  total_transactions: number;
   total_budget: number;
-  total_spent: number;
+  total_transactions: number;
+  beneficiaries: number;
   pending_verifications: number;
   recent_transactions: Transaction[];
-  top_schemes: Scheme[];
+  top_schemes: Transaction[];
 }
 
 export interface AnalyticsData {

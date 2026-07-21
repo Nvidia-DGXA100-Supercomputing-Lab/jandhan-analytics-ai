@@ -29,7 +29,7 @@ function DashboardContent() {
   };
 
   const kpis = [
-    { label: "Total Spending", value: formatCurrency(data?.total_spent ?? 0), icon: DollarSign, color: "text-blue-600", bg: "bg-blue-50" },
+    { label: "Total Spending", value: `₹${(data?.total_spending ?? 0).toLocaleString("en-IN")}`, icon: DollarSign, color: "text-blue-600", bg: "bg-blue-50" },
     { label: "Active Schemes", value: data?.total_schemes ?? 0, icon: FileText, color: "text-green-600", bg: "bg-green-50" },
     { label: "Transactions", value: data?.total_transactions ?? 0, icon: Users, color: "text-purple-600", bg: "bg-purple-50" },
     { label: "Pending Verifications", value: data?.pending_verifications ?? 0, icon: Clock, color: "text-orange-600", bg: "bg-orange-50" },

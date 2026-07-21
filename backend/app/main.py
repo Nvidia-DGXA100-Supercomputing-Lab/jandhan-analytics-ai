@@ -45,7 +45,7 @@ app.include_router(reports.router, prefix=f"{settings.API_V1_STR}/reports", tags
 app.include_router(schemes.router, prefix=f"{settings.API_V1_STR}/schemes", tags=["schemes"])
 app.include_router(admin.router, prefix=f"{settings.API_V1_STR}/admin", tags=["admin"])
 app.include_router(anomaly.router, prefix=f"{settings.API_V1_STR}/anomaly", tags=["anomaly"])
-app.include_router(report_generation.router, prefix=f"{settings.API_V1_STR}/reports", tags=["report-generation"])
+app.include_router(report_generation.router, prefix=f"{settings.API_V1_STR}/reports/generate", tags=["report-generation"])
 
 @app.on_event("startup")
 def startup_event():
