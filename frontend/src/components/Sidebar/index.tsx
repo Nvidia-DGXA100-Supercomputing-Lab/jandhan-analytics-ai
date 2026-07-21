@@ -14,11 +14,12 @@ import {
   Menu,
   X,
 } from "lucide-react";
+import { useAuth } from "@/hooks/useAuth";
 
 const navItems = [
   { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
   { href: "/analytics", label: "Analytics", icon: BarChart3 },
-  { href: "/ai-assistant", label: "AI Assistant", icon: MessageSquare },
+  { href: "/chatbot", label: "AI Assistant", icon: MessageSquare },
   { href: "/forecasting", label: "Forecasting", icon: TrendingUp },
   { href: "/reports", label: "Reports", icon: FileText },
   { href: "/settings", label: "Settings", icon: Settings },
@@ -28,16 +29,17 @@ export default function Sidebar() {
   const pathname = usePathname();
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
+  const { logout } = useAuth();
 
-  const handleLogout = () => {
-    localStorage.removeItem("token");
+  const handleLogout = async () => {
+    await logout();
     router.push("/login");
   };
 
   return (
     <>
       <button
-        className="lg:hidden fixed top-4 left-4 z-50 p-2 bg-white rounded-md shadow-md"
+        className="lg:hidden fixed top-4 left-4 z-50 p-2 bg-white dark:bg-slate-900 rounded-md shadow-md"
         onClick={() => setIsOpen(!isOpen)}
       >
         {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -48,7 +50,7 @@ export default function Sidebar() {
           fixed top-0 left-0 z-40 h-screen transition-transform
           ${isOpen ? "translate-x-0" : "-translate-x-full"}
           lg:translate-x-0 lg:static lg:block
-          w-64 bg-slate-900 text-white
+          w-64 bg-slate-900 text-white dark:bg-slate-950
         `}
       >
         <div className="p-6">
@@ -63,7 +65,7 @@ export default function Sidebar() {
         <nav className="mt-6 px-4 space-y-1">
           {navItems.map((item) => {
             const Icon = item.icon;
-            const isActive = pathname === item.href;
+            const isActive = (pathname || "").startsWith(item.href);
             return (
               <Link
                 key={item.href}
