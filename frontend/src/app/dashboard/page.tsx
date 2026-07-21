@@ -1,137 +1,133 @@
-import StatCard from "@/components/Cards/StatCard";
-import AreaChartComponent from "@/components/Charts/AreaChartComponent";
-import BarChartComponent from "@/components/Charts/BarChartComponent";
-import { DollarSign, Users, FileText, TrendingUp } from "lucide-react";
+"use client";
 
-const spendingData = [
-  { name: "Jan", value: 4000 },
-  { name: "Feb", value: 3000 },
-  { name: "Mar", value: 5000 },
-  { name: "Apr", value: 4500 },
-  { name: "May", value: 6000 },
-  { name: "Jun", value: 5500 },
-];
+import React from "react";
+import { useRouter } from "next/navigation";
+import { ProtectedRoute } from "@/components/auth/ProtectedRoute";
+import { DashboardLayout } from "@/components/layout/DashboardLayout";
+import { Card } from "@/components/ui/Card";
+import { Loading } from "@/components/ui/Loading";
+import { useApi } from "@/hooks/useApi";
+import { dashboardApi } from "@/lib/api";
+import { TrendChart } from "@/components/charts/TrendChart";
+import { DataTable } from "@/components/tables/DataTable";
+import { DollarSign, FileText, Users, Clock } from "lucide-react";
+import type { DashboardData, Transaction } from "@/types";
 
-const departmentData = [
-  { name: "Health", value: 12000 },
-  { name: "Education", value: 8500 },
-  { name: "Infrastructure", value: 15000 },
-  { name: "Agriculture", value: 6000 },
-  { name: "Defense", value: 18000 },
-];
+function DashboardContent() {
+  const { data, status, error, execute } = useApi<DashboardData>(dashboardApi.getDashboardData);
+
+  React.useEffect(() => {
+    execute();
+  }, [execute]);
+
+  const formatCurrency = (value: number) => {
+    return `₹${value.toLocaleString("en-IN")}`;
+  };
+
+  const formatDate = (dateStr: string) => {
+    return new Date(dateStr).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" });
+  };
+
+  const kpis = [
+    { label: "Total Spending", value: formatCurrency(data?.total_spent ?? 0), icon: DollarSign, color: "text-blue-600", bg: "bg-blue-50" },
+    { label: "Active Schemes", value: data?.total_schemes ?? 0, icon: FileText, color: "text-green-600", bg: "bg-green-50" },
+    { label: "Transactions", value: data?.total_transactions ?? 0, icon: Users, color: "text-purple-600", bg: "bg-purple-50" },
+    { label: "Pending Verifications", value: data?.pending_verifications ?? 0, icon: Clock, color: "text-orange-600", bg: "bg-orange-50" },
+  ];
+
+  const transactionColumns = [
+    { key: "recipient_name", header: "Recipient" },
+    { key: "scheme_id", header: "Scheme" },
+    { key: "amount", header: "Amount", render: (item: Transaction) => formatCurrency(item.amount) },
+    { key: "status", header: "Status", render: (item: Transaction) => (
+      <span className={`inline-flex rounded-full px-2 py-0.5 text-xs font-medium ${
+        item.status === "completed" ? "bg-green-100 text-green-700" :
+        item.status === "pending" ? "bg-yellow-100 text-yellow-700" :
+        "bg-red-100 text-red-700"
+      }`}>
+        {item.status}
+      </span>
+    )},
+    { key: "date", header: "Date", render: (item: Transaction) => formatDate(item.date) },
+  ];
+
+  if (status === "loading") {
+    return (
+      <div className="flex items-center justify-center py-12">
+        <Loading size="lg" />
+      </div>
+    );
+  }
+
+  if (status === "error") {
+    return (
+      <div className="rounded-md bg-red-50 p-4 text-sm text-red-600">
+        {error || "Failed to load dashboard data"}
+      </div>
+    );
+  }
+
+  const recentTransactions = data?.recent_transactions?.slice(0, 5) ?? [];
+
+  return (
+    <div className="space-y-6">
+      <div>
+        <h2 className="text-2xl font-bold text-gray-900">Dashboard</h2>
+        <p className="mt-1 text-sm text-gray-500">Overview of spending and scheme activity</p>
+      </div>
+
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {kpis.map((kpi) => (
+          <Card key={kpi.label} className="!p-0">
+            <div className="flex items-center gap-4 p-5">
+              <div className={`flex h-12 w-12 items-center justify-center rounded-lg ${kpi.bg} ${kpi.color}`}>
+                <kpi.icon className="h-6 w-6" />
+              </div>
+              <div>
+                <p className="text-sm text-gray-500">{kpi.label}</p>
+                <p className="text-xl font-bold text-gray-900">{kpi.value}</p>
+              </div>
+            </div>
+          </Card>
+        ))}
+      </div>
+
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+        <Card title="Spending Trend" description="Monthly spending over time">
+          {data?.recent_transactions && data.recent_transactions.length > 0 ? (
+            <TrendChart
+              data={data.recent_transactions.slice(0, 6).map((t) => ({
+                month: formatDate(t.date),
+                amount: t.amount,
+              }))}
+            />
+          ) : (
+            <p className="text-sm text-gray-500">No trend data available</p>
+          )}
+        </Card>
+
+        <Card title="Recent Transactions" description="Latest 5 transactions">
+          {recentTransactions.length > 0 ? (
+            <DataTable
+              columns={transactionColumns}
+              data={recentTransactions}
+              keyExtractor={(item) => item.id}
+            />
+          ) : (
+            <p className="text-sm text-gray-500">No transactions found</p>
+          )}
+        </Card>
+      </div>
+    </div>
+  );
+}
 
 export default function DashboardPage() {
   return (
-    <div className="space-y-6">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <StatCard
-          title="Total Spending"
-          value="₹2.45 Cr"
-          change="12% from last month"
-          trend="up"
-          icon={<DollarSign size={24} />}
-        />
-        <StatCard
-          title="Active Schemes"
-          value="1,284"
-          change="8% increase"
-          trend="up"
-          icon={<FileText size={24} />}
-        />
-        <StatCard
-          title="Beneficiaries"
-          value="4.2M"
-          change="15% increase"
-          trend="up"
-          icon={<Users size={24} />}
-        />
-        <StatCard
-          title="Transparency Score"
-          value="87%"
-          change="3% improvement"
-          trend="up"
-          icon={<TrendingUp size={24} />}
-        />
-      </div>
-
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="bg-white rounded-lg border border-slate-200 p-6 shadow-sm">
-          <h3 className="text-lg font-semibold text-slate-900 mb-4">
-            Spending Overview
-          </h3>
-          <AreaChartComponent data={spendingData} />
-        </div>
-        <div className="bg-white rounded-lg border border-slate-200 p-6 shadow-sm">
-          <h3 className="text-lg font-semibold text-slate-900 mb-4">
-            Department Allocation
-          </h3>
-          <BarChartComponent data={departmentData} color="#22c55e" />
-        </div>
-      </div>
-
-      <div className="bg-white rounded-lg border border-slate-200 shadow-sm overflow-hidden">
-        <div className="px-6 py-4 border-b border-slate-200">
-          <h3 className="text-lg font-semibold text-slate-900">Recent Transactions</h3>
-        </div>
-        <div className="overflow-x-auto">
-          <table className="w-full">
-            <thead className="bg-slate-50">
-              <tr>
-                <th className="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">
-                  Scheme
-                </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">
-                  Department
-                </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">
-                  Amount
-                </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">
-                  Status
-                </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">
-                  Date
-                </th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-slate-200">
-              <tr className="hover:bg-slate-50">
-                <td className="px-6 py-4 text-sm text-slate-900">PM-KISAN</td>
-                <td className="px-6 py-4 text-sm text-slate-600">Agriculture</td>
-                <td className="px-6 py-4 text-sm text-slate-900">₹2,50,000</td>
-                <td className="px-6 py-4">
-                  <span className="px-2 py-1 text-xs font-medium bg-green-100 text-green-700 rounded-full">
-                    Completed
-                  </span>
-                </td>
-                <td className="px-6 py-4 text-sm text-slate-500">2026-07-08</td>
-              </tr>
-              <tr className="hover:bg-slate-50">
-                <td className="px-6 py-4 text-sm text-slate-900">PM Awas Yojana</td>
-                <td className="px-6 py-4 text-sm text-slate-600">Housing</td>
-                <td className="px-6 py-4 text-sm text-slate-900">₹5,00,000</td>
-                <td className="px-6 py-4">
-                  <span className="px-2 py-1 text-xs font-medium bg-yellow-100 text-yellow-700 rounded-full">
-                    Processing
-                  </span>
-                </td>
-                <td className="px-6 py-4 text-sm text-slate-500">2026-07-07</td>
-              </tr>
-              <tr className="hover:bg-slate-50">
-                <td className="px-6 py-4 text-sm text-slate-900">Ayushman Bharat</td>
-                <td className="px-6 py-4 text-sm text-slate-600">Health</td>
-                <td className="px-6 py-4 text-sm text-slate-900">₹1,20,000</td>
-                <td className="px-6 py-4">
-                  <span className="px-2 py-1 text-xs font-medium bg-green-100 text-green-700 rounded-full">
-                    Completed
-                  </span>
-                </td>
-                <td className="px-6 py-4 text-sm text-slate-500">2026-07-06</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
+    <ProtectedRoute>
+      <DashboardLayout title="Dashboard">
+        <DashboardContent />
+      </DashboardLayout>
+    </ProtectedRoute>
   );
 }
