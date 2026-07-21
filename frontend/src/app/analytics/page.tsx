@@ -101,11 +101,5 @@ function AnalyticsContent() {
 }
 
 export default function AnalyticsPage() {
-  return (
-    <ProtectedRoute>
-      <DashboardLayout title="Analytics">
-        <AnalyticsContent />
-      </DashboardLayout>
-    </ProtectedRoute>
-  );
+  return <AnalyticsContent />;
 }

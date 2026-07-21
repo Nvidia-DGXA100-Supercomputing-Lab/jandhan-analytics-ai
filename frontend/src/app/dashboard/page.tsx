@@ -123,11 +123,5 @@ function DashboardContent() {
 }
 
 export default function DashboardPage() {
-  return (
-    <ProtectedRoute>
-      <DashboardLayout title="Dashboard">
-        <DashboardContent />
-      </DashboardLayout>
-    </ProtectedRoute>
-  );
+  return <DashboardContent />;
 }

@@ -75,26 +75,26 @@ function SchemesContent() {
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-2xl font-bold text-gray-900">Schemes</h2>
-        <p className="mt-1 text-sm text-gray-500">Browse and manage government schemes</p>
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Schemes</h2>
+        <p className="mt-1 text-sm text-gray-500 dark:text-slate-400">Browse and manage government schemes</p>
       </div>
 
       <Card>
         <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <div className="relative flex-1 sm:max-w-sm">
-            <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
+            <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400 dark:text-slate-500" />
             <input
               type="text"
               placeholder="Search schemes..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full rounded-md border border-gray-300 py-2 pl-10 pr-4 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500"
+              className="w-full rounded-md border border-gray-300 dark:border-slate-700 bg-white dark:bg-slate-800 py-2 pl-10 pr-4 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 text-gray-900 dark:text-slate-100 transition-colors duration-300"
             />
           </div>
           <select
             value={categoryFilter}
             onChange={(e) => setCategoryFilter(e.target.value)}
-            className="rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500"
+            className="rounded-md border border-gray-300 dark:border-slate-700 bg-white dark:bg-slate-800 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 text-gray-900 dark:text-slate-100 transition-colors duration-300"
           >
             <option value="">All Categories</option>
             {categories.map((c) => (
@@ -114,11 +114,5 @@ function SchemesContent() {
 }
 
 export default function SchemesPage() {
-  return (
-    <ProtectedRoute>
-      <DashboardLayout title="Schemes">
-        <SchemesContent />
-      </DashboardLayout>
-    </ProtectedRoute>
-  );
+  return <SchemesContent />;
 }

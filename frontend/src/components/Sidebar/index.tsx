@@ -13,16 +13,21 @@ import {
   LogOut,
   Menu,
   X,
+  List,
+  FolderOpen,
+  AlertTriangle,
 } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
 
 const navItems = [
   { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
   { href: "/analytics", label: "Analytics", icon: BarChart3 },
-  { href: "/chatbot", label: "AI Assistant", icon: MessageSquare },
+  { href: "/transactions", label: "Transactions", icon: List },
+  { href: "/schemes", label: "Schemes", icon: FolderOpen },
   { href: "/forecasting", label: "Forecasting", icon: TrendingUp },
+  { href: "/chatbot", label: "AI Assistant", icon: MessageSquare },
   { href: "/reports", label: "Reports", icon: FileText },
-  { href: "/settings", label: "Settings", icon: Settings },
+  { href: "/anomaly", label: "Anomaly Detection", icon: AlertTriangle },
 ];
 
 export default function Sidebar() {

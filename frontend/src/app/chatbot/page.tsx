@@ -168,11 +168,5 @@ function ChatbotContent() {
 }
 
 export default function ChatbotPage() {
-  return (
-    <ProtectedRoute>
-      <DashboardLayout title="AI Assistant">
-        <ChatbotContent />
-      </DashboardLayout>
-    </ProtectedRoute>
-  );
+  return <ChatbotContent />;
 }

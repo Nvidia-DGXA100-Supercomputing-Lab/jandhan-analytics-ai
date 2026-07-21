@@ -195,11 +195,5 @@ function ReportsContent() {
 }
 
 export default function ReportsPage() {
-  return (
-    <ProtectedRoute>
-      <DashboardLayout title="Reports">
-        <ReportsContent />
-      </DashboardLayout>
-    </ProtectedRoute>
-  );
+  return <ReportsContent />;
 }

@@ -45,11 +45,11 @@ export function DataTable<T>({ columns, data, keyExtractor, emptyMessage = "No d
     <div className="overflow-x-auto">
       <table className="w-full text-left text-sm">
         <thead>
-          <tr className="border-b border-gray-200">
+          <tr className="border-b border-gray-200 dark:border-slate-700">
             {columns.map((column) => (
               <th
                 key={column.key}
-                className={cn("px-4 py-3 font-medium text-gray-500", column.sortable && "cursor-pointer select-none hover:text-gray-700")}
+                className={cn("px-4 py-3 font-medium text-gray-500 dark:text-slate-400", column.sortable && "cursor-pointer select-none hover:text-gray-700 dark:hover:text-slate-200")}
                 onClick={() => column.sortable && handleSort(column.key)}
               >
                 <div className="flex items-center gap-1">
@@ -65,15 +65,15 @@ export function DataTable<T>({ columns, data, keyExtractor, emptyMessage = "No d
         <tbody>
           {sortedData.length === 0 ? (
             <tr>
-              <td colSpan={columns.length} className="px-4 py-8 text-center text-gray-500">
+              <td colSpan={columns.length} className="px-4 py-8 text-center text-gray-500 dark:text-slate-400">
                 {emptyMessage}
               </td>
             </tr>
           ) : (
             sortedData.map((item) => (
-              <tr key={keyExtractor(item)} className="border-b border-gray-100 hover:bg-gray-50">
+              <tr key={keyExtractor(item)} className="border-b border-gray-100 dark:border-slate-700 hover:bg-gray-50 dark:hover:bg-slate-800">
                 {columns.map((column) => (
-                  <td key={column.key} className="px-4 py-3 text-gray-700">
+                  <td key={column.key} className="px-4 py-3 text-gray-700 dark:text-slate-300">
                     {column.render ? column.render(item) : String((item as Record<string, unknown>)[column.key] ?? "")}
                   </td>
                 ))}

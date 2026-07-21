@@ -104,11 +104,5 @@ function ForecastingContent() {
 }
 
 export default function ForecastingPage() {
-  return (
-    <ProtectedRoute>
-      <DashboardLayout title="Forecasting">
-        <ForecastingContent />
-      </DashboardLayout>
-    </ProtectedRoute>
-  );
+  return <ForecastingContent />;
 }
