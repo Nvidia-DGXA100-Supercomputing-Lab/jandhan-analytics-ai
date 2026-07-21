@@ -31,3 +31,45 @@ Thumbs.db
 
 # Logs
 *.log
+
+# Frontend specific
+frontend/node_modules
+frontend/.next
+frontend/out
+
+# Frontend environment
+frontend/.env.local
+frontend/.env.development.local
+frontend/.env.test.local
+frontend/.env.production.local
+
+# Frontend logs
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+
+# Frontend misc
+frontend/.DS_Store
+frontend/.idea
+frontend/.vscode
+*~
+
+# Python
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+env
+venv
+.venv
+
+# Database
+*.sqlite
+*.db
+
+# AI engine models
+ai_engine/**/*.pkl
+
+# Notebooks
+.ipynb_checkpoints
