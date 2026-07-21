@@ -76,8 +76,8 @@ function ChatbotContent() {
     <div className="flex h-[calc(100vh-8rem)] flex-col">
       <div className="mb-4 flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-bold text-gray-900">AI Assistant</h2>
-          <p className="mt-1 text-sm text-gray-500">Ask questions about spending, schemes, and analytics</p>
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-white">AI Assistant</h2>
+          <p className="mt-1 text-sm text-gray-500 dark:text-slate-400">Ask questions about spending, schemes, and analytics</p>
         </div>
         <Button variant="outline" size="sm" onClick={handleClear} disabled={messages.length === 0}>
           <Trash2 className="mr-2 h-4 w-4" />
@@ -85,10 +85,10 @@ function ChatbotContent() {
         </Button>
       </div>
 
-      <Card className="flex flex-1 flex-col !p-0 overflow-hidden">
+      <Card className="flex flex-1 flex-col !p-0 overflow-hidden dark:bg-slate-900">
         <div className="flex-1 overflow-y-auto p-4 space-y-4">
           {messages.length === 0 && historyStatus !== "loading" && (
-            <div className="flex h-full items-center justify-center text-gray-500">
+            <div className="flex h-full items-center justify-center text-gray-500 dark:text-slate-400">
               <p>Start a conversation by typing a message below</p>
             </div>
           )}
@@ -99,7 +99,7 @@ function ChatbotContent() {
               className={`flex gap-3 ${message.role === "user" ? "justify-end" : "justify-start"}`}
             >
               {message.role === "assistant" && (
-                <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-primary-100 text-primary-700">
+                <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-300">
                   <Bot className="h-4 w-4" />
                 </div>
               )}
@@ -107,16 +107,16 @@ function ChatbotContent() {
                 className={`max-w-[80%] rounded-lg px-4 py-2 ${
                   message.role === "user"
                     ? "bg-primary-600 text-white"
-                    : "bg-gray-100 text-gray-900"
+                    : "bg-gray-100 dark:bg-slate-800 text-gray-900 dark:text-white"
                 }`}
               >
                 <p className="text-sm whitespace-pre-wrap">{message.content}</p>
-                <p className={`mt-1 text-xs ${message.role === "user" ? "text-primary-200" : "text-gray-500"}`}>
+                <p className={`mt-1 text-xs ${message.role === "user" ? "text-primary-200" : "text-gray-500 dark:text-slate-400"}`}>
                   {new Date(message.timestamp).toLocaleTimeString("en-IN", { hour: "2-digit", minute: "2-digit" })}
                 </p>
               </div>
               {message.role === "user" && (
-                <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-gray-200 text-gray-700">
+                <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-gray-200 dark:bg-slate-700 text-gray-700 dark:text-slate-300">
                   <User className="h-4 w-4" />
                 </div>
               )}
@@ -125,14 +125,14 @@ function ChatbotContent() {
 
           {sendStatus === "loading" && (
             <div className="flex gap-3 justify-start">
-              <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-primary-100 text-primary-700">
+              <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-300">
                 <Bot className="h-4 w-4" />
               </div>
-              <div className="rounded-lg bg-gray-100 px-4 py-2">
+              <div className="rounded-lg bg-gray-100 dark:bg-slate-800 px-4 py-2">
                 <div className="flex items-center gap-1">
-                  <div className="h-2 w-2 animate-bounce rounded-full bg-gray-400 [animation-delay:-0.3s]" />
-                  <div className="h-2 w-2 animate-bounce rounded-full bg-gray-400 [animation-delay:-0.15s]" />
-                  <div className="h-2 w-2 animate-bounce rounded-full bg-gray-400" />
+                  <div className="h-2 w-2 animate-bounce rounded-full bg-gray-400 dark:bg-slate-500 [animation-delay:-0.3s]" />
+                  <div className="h-2 w-2 animate-bounce rounded-full bg-gray-400 dark:bg-slate-500 [animation-delay:-0.15s]" />
+                  <div className="h-2 w-2 animate-bounce rounded-full bg-gray-400 dark:bg-slate-500" />
                 </div>
               </div>
             </div>
@@ -147,7 +147,7 @@ function ChatbotContent() {
           <div ref={messagesEndRef} />
         </div>
 
-        <div className="border-t border-gray-200 p-4">
+        <div className="border-t border-gray-200 dark:border-slate-800 p-4">
           <div className="flex gap-2">
             <Input
               value={input}

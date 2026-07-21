@@ -59,8 +59,8 @@ function AnalyticsContent() {
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-2xl font-bold text-gray-900">Analytics</h2>
-        <p className="mt-1 text-sm text-gray-500">Department-wise spending and trends</p>
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Analytics</h2>
+        <p className="mt-1 text-sm text-gray-500 dark:text-slate-400">Department-wise spending and trends</p>
       </div>
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -71,8 +71,8 @@ function AnalyticsContent() {
                 <kpi.icon className="h-6 w-6" />
               </div>
               <div>
-                <p className="text-sm text-gray-500">{kpi.label}</p>
-                <p className="text-xl font-bold text-gray-900">{kpi.value}</p>
+                <p className="text-sm text-gray-500 dark:text-slate-400">{kpi.label}</p>
+                <p className="text-xl font-bold text-gray-900 dark:text-white">{kpi.value}</p>
               </div>
             </div>
           </Card>
@@ -84,7 +84,7 @@ function AnalyticsContent() {
           {categoryData && categoryData.length > 0 ? (
             <SpendingChart data={categoryData} />
           ) : (
-            <p className="text-sm text-gray-500">No category data available</p>
+            <p className="text-sm text-gray-500 dark:text-slate-400">No category data available</p>
           )}
         </Card>
 
@@ -92,7 +92,7 @@ function AnalyticsContent() {
           {trendData && trendData.length > 0 ? (
             <TrendChart data={trendData} />
           ) : (
-            <p className="text-sm text-gray-500">No trend data available</p>
+            <p className="text-sm text-gray-500 dark:text-slate-400">No trend data available</p>
           )}
         </Card>
       </div>

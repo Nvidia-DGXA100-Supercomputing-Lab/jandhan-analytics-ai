@@ -48,3 +48,12 @@ def startup_event():
 @app.get("/")
 def health_check():
     return {"status": "ok", "message": "JanDhan Analytics AI API is running"}
+
+@app.get("/health")
+def health_check_detailed():
+    return {
+        "status": "healthy",
+        "service": "JanDhan Analytics AI",
+        "version": settings.VERSION,
+        "database": "PostgreSQL" if not settings.DATABASE_URL.startswith("sqlite") else "SQLite",
+    }

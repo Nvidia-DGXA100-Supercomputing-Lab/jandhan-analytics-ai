@@ -33,16 +33,25 @@ interface SkeletonProps {
 }
 
 export function Skeleton({ className }: SkeletonProps) {
-  return <div className={cn("animate-pulse rounded-md bg-gray-200", className)} />;
+  return <div className={cn("animate-pulse rounded-md bg-gray-200 dark:bg-slate-700", className)} />;
 }
 
 export function CardSkeleton() {
   return (
-    <div className="rounded-lg border border-gray-200 bg-white p-6">
+    <div className="rounded-lg border border-gray-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6">
       <Skeleton className="mb-4 h-6 w-1/3" />
       <Skeleton className="mb-2 h-4 w-full" />
       <Skeleton className="mb-2 h-4 w-5/6" />
       <Skeleton className="h-4 w-4/6" />
+    </div>
+  );
+}
+
+export function StatCardSkeleton() {
+  return (
+    <div className="rounded-lg border border-gray-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6">
+      <Skeleton className="mb-2 h-4 w-1/2" />
+      <Skeleton className="h-8 w-3/4" />
     </div>
   );
 }

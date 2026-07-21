@@ -72,8 +72,8 @@ function DashboardContent() {
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-2xl font-bold text-gray-900">Dashboard</h2>
-        <p className="mt-1 text-sm text-gray-500">Overview of spending and scheme activity</p>
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Dashboard</h2>
+        <p className="mt-1 text-sm text-gray-500 dark:text-slate-400">Overview of spending and scheme activity</p>
       </div>
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -84,8 +84,8 @@ function DashboardContent() {
                 <kpi.icon className="h-6 w-6" />
               </div>
               <div>
-                <p className="text-sm text-gray-500">{kpi.label}</p>
-                <p className="text-xl font-bold text-gray-900">{kpi.value}</p>
+                <p className="text-sm text-gray-500 dark:text-slate-400">{kpi.label}</p>
+                <p className="text-xl font-bold text-gray-900 dark:text-white">{kpi.value}</p>
               </div>
             </div>
           </Card>
@@ -102,7 +102,7 @@ function DashboardContent() {
               }))}
             />
           ) : (
-            <p className="text-sm text-gray-500">No trend data available</p>
+            <p className="text-sm text-gray-500 dark:text-slate-400">No trend data available</p>
           )}
         </Card>
 
@@ -114,7 +114,7 @@ function DashboardContent() {
               keyExtractor={(item) => item.id}
             />
           ) : (
-            <p className="text-sm text-gray-500">No transactions found</p>
+            <p className="text-sm text-gray-500 dark:text-slate-400">No transactions found</p>
           )}
         </Card>
       </div>
