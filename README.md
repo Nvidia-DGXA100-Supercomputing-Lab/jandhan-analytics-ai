@@ -1,6 +1,6 @@
 <div align="center">
 
-# 📊 JanDhan Analytics AI
+#  JanDhan Analytics AI
 
 ### AI-Powered Public Spending Transparency Platform
 
@@ -17,7 +17,7 @@ Transforming government expenditure data into meaningful insights using Artifici
 
 ---
 
-# 📖 Overview
+#  Overview
 
 **JanDhan Analytics AI** is an AI-powered CivicTech platform designed to improve transparency and accountability in government spending. The platform transforms complex public expenditure datasets into interactive dashboards, AI-generated insights, predictive analytics, and intelligent reports.
 
@@ -25,22 +25,22 @@ It enables citizens, NGOs, researchers, and government officials to explore and 
 
 ---
 
-# 🎯 Problem Statement
+#  Problem Statement
 
 Government expenditure data is often available as large spreadsheets or reports, making it difficult for citizens and organizations to analyze.
 
 JanDhan Analytics AI solves this challenge by providing:
 
-- 📊 Interactive Dashboards
-- 🤖 AI-powered Financial Insights
-- 📈 Budget Forecasting
-- 🚨 Spending Anomaly Detection
-- 💬 Conversational AI Assistant
-- 📄 Automated Reports
+-  Interactive Dashboards
+-  AI-powered Financial Insights
+-  Budget Forecasting
+-  Spending Anomaly Detection
+-  Conversational AI Assistant
+-  Automated Reports
 
 ---
 
-# ✨ Features
+#  Features
 
 - Interactive Public Spending Dashboard
 - Department-wise Analytics
@@ -60,7 +60,7 @@ JanDhan Analytics AI solves this challenge by providing:
 
 ---
 
-# 🏗️ System Architecture
+#  System Architecture
 
 ```text
                 Users
@@ -84,7 +84,7 @@ JanDhan Analytics AI solves this challenge by providing:
 
 ---
 
-# 🛠️ Tech Stack
+#  Tech Stack
 
 ## Frontend
 
@@ -118,7 +118,7 @@ JanDhan Analytics AI solves this challenge by providing:
 
 ---
 
-# 📂 Project Structure
+#  Project Structure
 
 ```text
 JanDhan-Analytics-AI/
@@ -137,7 +137,7 @@ JanDhan-Analytics-AI/
 
 ---
 
-# 🚀 Getting Started
+#  Getting Started
 
 ## Clone Repository
 
@@ -195,7 +195,7 @@ alembic upgrade head
 
 ---
 
-# 📊 Modules
+#  Modules
 
 - Authentication
 - Dashboard
@@ -209,7 +209,7 @@ alembic upgrade head
 
 ---
 
-# 👥 User Roles
+# User Roles
 
 ### Citizen
 
@@ -237,7 +237,7 @@ alembic upgrade head
 
 ---
 
-# 📸 Screenshots
+# Screenshots
 
 Screenshots will be added after frontend development.
 
@@ -247,7 +247,7 @@ docs/Images/
 
 ---
 
-# 📚 Documentation
+#  Documentation
 
 | Document | Description |
 |----------|-------------|
@@ -263,7 +263,7 @@ docs/Images/
 
 ---
 
-# 🗺️ Roadmap
+#  Roadmap
 
 - [x] Project Planning
 - [x] Documentation
@@ -276,7 +276,7 @@ docs/Images/
 
 ---
 
-# 🤝 Contributing
+#  Contributing
 
 Contributions are welcome!
 
@@ -290,13 +290,13 @@ before creating a Pull Request.
 
 ---
 
-# 📄 License
+#  License
 
 This project is licensed under the MIT License.
 
 ---
 
-# 🙏 Acknowledgements
+#  Acknowledgements
 
 - Open Government Data (OGD)
 - FastAPI
@@ -307,18 +307,9 @@ This project is licensed under the MIT License.
 
 ---
 
-# 📬 Contact
-
-**Developer:** Ankit Singh Tomar
-
-GitHub: https://github.com/YOUR_USERNAME
-
-Email: your-email@example.com
-
----
 
 <div align="center">
 
-⭐ If you found this project useful, consider giving it a star!
+ If you found this project useful, consider giving it a star!
 
 </div>
