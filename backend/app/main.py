@@ -1,9 +1,11 @@
 import sys
 from pathlib import Path
+from time import time
 sys.path.append(str(Path(__file__).resolve().parent.parent.parent))
 
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
 from app.core.config import settings
 from app.database.session import engine, get_db
 from app.models import user, transaction, scheme, report
@@ -24,6 +26,14 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+@app.middleware("http")
+async def log_requests(request: Request, call_next):
+    start = time()
+    response = await call_next(request)
+    process_time = time() - start
+    response.headers["X-Process-Time"] = str(process_time)
+    return response
 
 app.include_router(auth.router, prefix=f"{settings.API_V1_STR}/auth", tags=["auth"])
 app.include_router(dashboard.router, prefix=f"{settings.API_V1_STR}/dashboard", tags=["dashboard"])
