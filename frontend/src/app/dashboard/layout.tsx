@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Sidebar from "@/components/Sidebar";
 import Navbar from "@/components/Navbar";
-import { useAuth } from "@/context/AuthContext";
+import { useAuth } from "@/hooks/useAuth";
 
 export default function DashboardLayout({
   children,
@@ -12,13 +12,13 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }>) {
   const router = useRouter();
-  const { token, isLoading } = useAuth();
+  const { token, isLoading, isAuthenticated } = useAuth();
 
   useEffect(() => {
-    if (!isLoading && !token) {
+    if (!isLoading && !isAuthenticated) {
       router.push("/login");
     }
-  }, [token, isLoading, router]);
+  }, [isAuthenticated, isLoading, router]);
 
   if (isLoading) {
     return (
@@ -28,7 +28,7 @@ export default function DashboardLayout({
     );
   }
 
-  if (!token) {
+  if (!isAuthenticated) {
     return null;
   }
 

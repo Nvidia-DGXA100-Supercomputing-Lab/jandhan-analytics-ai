@@ -24,6 +24,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     const initAuth = async () => {
       const access = typeof window !== "undefined" ? localStorage.getItem("access_token") : null;
       const refresh = typeof window !== "undefined" ? localStorage.getItem("refresh_token") : null;
+      console.log("[Auth] initAuth access=", access ? "present" : "missing", "refresh=", refresh ? "present" : "missing");
 
       if (!access || !refresh) {
         setState((prev) => ({ ...prev, isLoading: false }));
@@ -31,10 +32,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       }
 
       try {
-        const { user } = await authApi.me();
+        console.log("[Auth] calling authApi.me...");
+        const me = await authApi.me();
+        const user = me.user || me;
+        console.log("[Auth] me success", user);
         setState({
           user: {
-            id: user.id,
+            id: String(user.id),
             name: user.name,
             email: user.email,
             role: user.role,
@@ -44,7 +48,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           isAuthenticated: true,
           isLoading: false,
         });
-      } catch {
+      } catch (err) {
+        console.log("[Auth] me failed", err);
         clearTokens();
         setState((prev) => ({ ...prev, isLoading: false }));
       }
@@ -54,11 +59,14 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const login = async (email: string, password: string) => {
+    console.log("[Auth] login start", email);
     const response = await authApi.login({ email, password });
-    setTokens(response.token.access, response.token.refresh);
+    console.log("[Auth] login response", response);
+    setTokens(response.access_token, response.refresh_token);
+    const userData = { id: email, name: email.split("@")[0], email, role: "citizen" };
     setState({
-      user: response.user,
-      token: response.token,
+      user: userData,
+      token: { access: response.access_token, refresh: response.refresh_token },
       isAuthenticated: true,
       isLoading: false,
     });
@@ -66,10 +74,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const register = async (name: string, email: string, password: string) => {
     const response = await authApi.register({ name, email, password });
-    setTokens(response.token.access, response.token.refresh);
+    setTokens(response.access_token, response.refresh_token);
+    const userData = { id: email, name, email, role: "citizen" };
     setState({
-      user: response.user,
-      token: response.token,
+      user: userData,
+      token: { access: response.access_token, refresh: response.refresh_token },
       isAuthenticated: true,
       isLoading: false,
     });

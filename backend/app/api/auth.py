@@ -36,7 +36,7 @@ def get_current_admin_user(current_user: User = Depends(get_current_user)) -> Us
         )
     return current_user
 
-@router.post("/register", response_model=Token)
+@router.post("/register")
 def register(user_data: UserCreate, db: Session = Depends(get_db)):
     existing_user = db.query(User).filter(User.email == user_data.email).first()
     if existing_user:
@@ -59,9 +59,19 @@ def register(user_data: UserCreate, db: Session = Depends(get_db)):
         data={"sub": new_user.id}, expires_delta=access_token_expires
     )
     refresh_token = create_refresh_token(data={"sub": new_user.id})
-    return {"access_token": access_token, "refresh_token": refresh_token, "token_type": "bearer"}
+    return {
+        "access_token": access_token,
+        "refresh_token": refresh_token,
+        "token_type": "bearer",
+        "user": {
+            "id": new_user.id,
+            "email": new_user.email,
+            "name": new_user.name,
+            "role": new_user.role,
+        },
+    }
 
-@router.post("/login", response_model=Token)
+@router.post("/login")
 def login(credentials: UserLogin, db: Session = Depends(get_db)):
     user = db.query(User).filter(User.email == credentials.email).first()
     if not user or not verify_password(credentials.password, user.hashed_password):
@@ -74,7 +84,18 @@ def login(credentials: UserLogin, db: Session = Depends(get_db)):
         data={"sub": user.id}, expires_delta=access_token_expires
     )
     refresh_token = create_refresh_token(data={"sub": user.id})
-    return {"access_token": access_token, "refresh_token": refresh_token, "token_type": "bearer"}
+    print("LOGIN DEBUG:", {"user_id": user.id, "email": user.email, "role": user.role})
+    return {
+        "access_token": access_token,
+        "refresh_token": refresh_token,
+        "token_type": "bearer",
+        "user": {
+            "id": user.id,
+            "email": user.email,
+            "name": user.name,
+            "role": user.role,
+        },
+    }
 
 @router.get("/me", response_model=UserSchema)
 def read_users_me(current_user: User = Depends(get_current_user)):

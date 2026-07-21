@@ -26,6 +26,7 @@ class Token(BaseModel):
     access_token: str
     refresh_token: str
     token_type: str = "bearer"
+    user: Optional[dict] = None
 
 class TokenPayload(BaseModel):
     sub: Optional[int] = None
