@@ -4,7 +4,7 @@ async function request<T>(
   endpoint: string,
   options?: RequestInit
 ): Promise<T> {
-  const token = typeof window !== "undefined" ? localStorage.getItem("token") : null;
+  const token = typeof window !== "undefined" ? localStorage.getItem("access_token") : null;
 
   const res = await fetch(`${API_BASE}${endpoint}`, {
     ...options,
@@ -20,16 +20,21 @@ async function request<T>(
     throw new Error(error.detail || "Request failed");
   }
 
+  if (res.status === 204) {
+    return undefined as T;
+  }
+
   return res.json();
 }
 
 export interface ChatResponse {
-  response?: string;
+  content?: string;
   message?: string;
 }
 
 export interface LoginResponse {
   access_token: string;
+  refresh_token: string;
 }
 
 export interface DashboardResponse {
@@ -41,7 +46,7 @@ export interface DashboardResponse {
 
 export const api = {
   login: (credentials: { email: string; password: string }) =>
-    request<LoginResponse>("/auth/login", {
+    request<LoginResponse>("/auth/login/", {
       method: "POST",
       body: JSON.stringify(credentials),
     }),
@@ -50,7 +55,7 @@ export const api = {
   getAnalytics: () => request("/analytics/"),
   getTransactions: () => request("/transactions/"),
   chat: (message: string) =>
-    request<ChatResponse>("/chatbot/chat", {
+    request<ChatResponse>("/chatbot/chat/", {
       method: "POST",
       body: JSON.stringify({ message }),
     }),
