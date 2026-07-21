@@ -8,10 +8,10 @@ Transforming government expenditure data into meaningful insights using Artifici
 
 ![License](https://img.shields.io/badge/License-MIT-green)
 ![Python](https://img.shields.io/badge/Python-3.12-blue)
-![FastAPI](https://img.shields.io/badge/FastAPI-Latest-009688)
+![FastAPI](https://img.shields.io/badge/FastAPI-0.115-009688)
 ![Next.js](https://img.shields.io/badge/Next.js-15-black)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-blue)
-![Status](https://img.shields.io/badge/Status-Under%20Development-orange)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15-blue)
+![Status](https://img.shields.io/badge/Status-Active-green)
 
 </div>
 
@@ -122,17 +122,46 @@ JanDhan Analytics AI solves this challenge by providing:
 
 ```text
 JanDhan-Analytics-AI/
-
 ├── backend/
+│   ├── app/
+│   │   ├── api/          # FastAPI routes
+│   │   ├── core/         # Config, security
+│   │   ├── database/     # Session, seed
+│   │   ├── models/       # SQLAlchemy models
+│   │   └── schemas/      # Pydantic schemas
+│   ├── alembic/          # Database migrations
+│   ├── Dockerfile
+│   ├── requirements.txt
+│   └── pytest.ini
 ├── frontend/
+│   ├── src/
+│   │   ├── app/          # Next.js pages
+│   │   ├── components/   # React components
+│   │   ├── hooks/        # Custom hooks
+│   │   ├── lib/          # API client
+│   │   ├── services/     # API services
+│   │   └── types/        # TypeScript types
+│   ├── Dockerfile
+│   ├── package.json
+│   └── tailwind.config.js
+├── ai_engine/
+│   ├── chatbot/          # LLM, RAG, prompts
+│   └── forecasting/      # Train, predict models
 ├── database/
+│   ├── schema.sql
+│   └── seed_data.sql
 ├── datasets/
-├── docs/
+│   └── raw/              # Sample CSV datasets
 ├── deployment/
-├── tests/
+│   └── nginx.conf
+├── docs/                 # Documentation
+├── test/
+│   ├── backend/          # Pytest tests
+│   └── frontend/         # Vitest tests
+├── .github/workflows/    # CI/CD
 ├── docker-compose.yml
-├── README.md
-└── LICENSE
+├── PROJECT_COMPLETION_REPORT.md
+└── README.md
 ```
 
 ---
@@ -149,49 +178,163 @@ cd JanDhan-Analytics-AI
 
 ---
 
-## Backend Setup
+## Prerequisites
+
+- Python 3.11+
+- Node.js 20+
+- PostgreSQL 15+ (or use SQLite for development)
+- Docker & Docker Compose (optional)
+
+## Environment Variables
+
+### Backend (`backend/.env`)
+
+```env
+DATABASE_URL=postgresql://jandhan:jandhan123@localhost:5432/jandhan_db
+SECRET_KEY=your-secret-key-here-change-in-production
+ALGORITHM=HS256
+ACCESS_TOKEN_EXPIRE_MINUTES=11520
+```
+
+### Frontend (`frontend/.env.local`)
+
+```env
+NEXT_PUBLIC_API_URL=http://localhost:8000/api
+```
+
+## Quick Start with Docker
+
+```bash
+# Clone the repository
+git clone https://github.com/Nvidia-DGXA100-Supercomputing-Lab/jandhan-analytics-ai.git
+cd jandhan-analytics-ai
+
+# Start all services
+docker-compose up --build
+
+# Backend: http://localhost:8000
+# Frontend: http://localhost:3000
+# API Docs: http://localhost:8000/docs
+```
+
+## Manual Setup
+
+### Backend Setup
 
 ```bash
 cd backend
 
+# Create virtual environment
 python -m venv venv
 
+# Activate virtual environment
+# Windows:
 venv\Scripts\activate
+# Linux/Mac:
+source venv/bin/activate
 
+# Install dependencies
 pip install -r requirements.txt
+
+# Run database migrations
+alembic upgrade head
+
+# Seed database (optional)
+python -c "from app.database.seed import seed_database; from app.database.session import SessionLocal; db = SessionLocal(); seed_database(db); db.close()"
+
+# Run backend server
+uvicorn app.main:app --reload --port 8000
 ```
 
-Run backend
-
-```bash
-uvicorn app.main:app --reload
-```
-
----
-
-## Frontend Setup
+### Frontend Setup
 
 ```bash
 cd frontend
 
+# Install dependencies
 npm install
 
+# Run development server
 npm run dev
 ```
 
----
+### Database Setup
 
-## Database
-
-```sql
-CREATE DATABASE jandhan_ai;
-```
-
-Run migrations
+#### Option 1: SQLite (Development)
 
 ```bash
-alembic upgrade head
+# The app auto-creates SQLite database on first run
+# No manual setup required
 ```
+
+#### Option 2: PostgreSQL (Production)
+
+```bash
+# Create database
+createdb jandhan_db
+
+# Run migrations
+cd backend
+alembic upgrade head
+
+# Seed data
+psql -d jandhan_db -f database/seed_data.sql
+```
+
+## Running Tests
+
+### Backend Tests
+
+```bash
+cd backend
+pip install pytest httpx
+pytest tests/ -v
+```
+
+### Frontend Tests
+
+```bash
+cd frontend
+npm install --save-dev vitest @testing-library/react @testing-library/jest-dom
+npm test
+```
+
+## Project Structure
+
+```
+backend/
+├── app/
+│   ├── api/              # API endpoints
+│   ├── core/             # Configuration & security
+│   ├── database/         # Database setup
+│   ├── models/           # SQLAlchemy models
+│   └── schemas/          # Pydantic schemas
+├── alembic/              # Database migrations
+├── Dockerfile
+└── requirements.txt
+
+frontend/
+├── src/
+│   ├── app/              # Next.js App Router pages
+│   ├── components/       # Reusable UI components
+│   ├── hooks/            # Custom React hooks
+│   ├── lib/              # API client & utilities
+│   └── types/            # TypeScript definitions
+├── Dockerfile
+├── package.json
+└── tailwind.config.js
+```
+
+## API Documentation
+
+Once the backend is running, visit:
+- Swagger UI: http://localhost:8000/docs
+- ReDoc: http://localhost:8000/redoc
+
+## Default Credentials
+
+- **Email:** admin@jandhan.gov.in
+- **Password:** admin123
 
 ---
 
@@ -267,12 +410,16 @@ docs/Images/
 
 - [x] Project Planning
 - [x] Documentation
-- [ ] UI Design
-- [ ] Backend Development
-- [ ] Frontend Development
-- [ ] AI Integration
-- [ ] Testing
-- [ ] Deployment
+- [x] Backend Development
+- [x] Frontend Development
+- [x] AI Integration
+- [x] Testing
+- [x] Deployment
+- [x] CI/CD
+- [ ] Mobile App
+- [ ] Advanced ML Models
+- [ ] Multi-language Support
+- [ ] Real-time Notifications
 
 ---
 
