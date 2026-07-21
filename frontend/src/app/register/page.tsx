@@ -65,20 +65,20 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gray-50 px-4">
-      <Card className="w-full max-w-md">
+    <div className="flex min-h-screen items-center justify-center bg-gray-50 dark:bg-slate-950 px-4 transition-colors duration-300">
+      <Card className="w-full max-w-md dark:bg-slate-900 dark:border-slate-800">
         <div className="mb-6 text-center">
           <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary-600 text-white">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
             </svg>
           </div>
-          <h1 className="text-2xl font-bold text-gray-900">Create an account</h1>
-          <p className="mt-2 text-sm text-gray-600">Join JanDhan for transparent public spending insights</p>
+          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Create an account</h1>
+          <p className="mt-2 text-sm text-gray-600 dark:text-slate-400">Join JanDhan for transparent public spending insights</p>
         </div>
 
         {submitError && (
-          <div className="mb-4 rounded-md bg-red-50 p-3 text-sm text-red-600">{submitError}</div>
+          <div className="mb-4 rounded-md bg-red-50 dark:bg-red-900/20 p-3 text-sm text-red-600 dark:text-red-400">{submitError}</div>
         )}
 
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -91,7 +91,7 @@ export default function RegisterPage() {
           </Button>
         </form>
 
-        <p className="mt-6 text-center text-sm text-gray-600">
+        <p className="mt-6 text-center text-sm text-gray-600 dark:text-slate-400">
           Already have an account?{" "}
           <Link href="/login" className="font-medium text-primary-600 hover:text-primary-500">
             Sign in

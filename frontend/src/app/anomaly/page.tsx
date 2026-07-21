@@ -64,8 +64,8 @@ function AnomalyContent() {
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-2xl font-bold text-gray-900">Anomaly Detection</h2>
-        <p className="mt-1 text-sm text-gray-500">Detected irregularities in transactions and spending</p>
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Anomaly Detection</h2>
+        <p className="mt-1 text-sm text-gray-500 dark:text-slate-400">Detected irregularities in transactions and spending</p>
       </div>
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -76,8 +76,8 @@ function AnomalyContent() {
                 <kpi.icon className="h-6 w-6" />
               </div>
               <div>
-                <p className="text-sm text-gray-500">{kpi.label}</p>
-                <p className="text-xl font-bold text-gray-900">{kpi.value}</p>
+                <p className="text-sm text-gray-500 dark:text-slate-400">{kpi.label}</p>
+                <p className="text-xl font-bold text-gray-900 dark:text-white">{kpi.value}</p>
               </div>
             </div>
           </Card>
@@ -100,7 +100,7 @@ function AnomalyContent() {
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2">
-                      <p className="text-sm font-medium text-gray-900 capitalize">{anomaly.type.replace(/_/g, " ")}</p>
+                      <p className="text-sm font-medium text-gray-900 dark:text-white capitalize">{anomaly.type.replace(/_/g, " ")}</p>
                       <span className={`inline-flex rounded-full px-2 py-0.5 text-xs font-medium capitalize ${
                         anomaly.severity === "critical" || anomaly.severity === "high" ? "bg-red-100 text-red-700" :
                         anomaly.severity === "medium" ? "bg-yellow-100 text-yellow-700" :
@@ -109,8 +109,8 @@ function AnomalyContent() {
                         {anomaly.severity}
                       </span>
                     </div>
-                    <p className="mt-1 text-sm text-gray-700">{anomaly.description}</p>
-                    <div className="mt-2 flex flex-wrap items-center gap-4 text-xs text-gray-500">
+                    <p className="mt-1 text-sm text-gray-700 dark:text-slate-300">{anomaly.description}</p>
+                    <div className="mt-2 flex flex-wrap items-center gap-4 text-xs text-gray-500 dark:text-slate-400">
                       <span>Transaction: {anomaly.transaction_id}</span>
                       <span>Confidence: {Math.round(anomaly.confidence * 100)}%</span>
                       <span>Detected: {formatDate(anomaly.detected_at)}</span>
@@ -121,7 +121,7 @@ function AnomalyContent() {
             })}
           </div>
         ) : (
-          <div className="py-8 text-center text-gray-500">
+          <div className="py-8 text-center text-gray-500 dark:text-slate-400">
             <ShieldCheck className="mx-auto mb-2 h-8 w-8 text-green-400" />
             <p>No anomalies detected</p>
             <p className="mt-1 text-sm">All transactions appear normal</p>
