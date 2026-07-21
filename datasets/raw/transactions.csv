@@ -1,0 +1,21 @@
+transaction_id,scheme_id,scheme,department,amount,status,date,recipient_name,recipient_account
+1,1,PM Awas Yojana,Housing,2500000,completed,2024-01-15,Rajesh Kumar,1234567890
+2,1,PM Awas Yojana,Housing,1800000,completed,2024-02-10,Sunita Devi,1234567891
+3,1,PM Awas Yojana,Housing,3200000,completed,2024-03-05,Anil Sharma,1234567892
+4,2,Ujjwala Yojana,Energy,1200000,completed,2024-01-20,Priya Singh,1234567893
+5,2,Ujjwala Yojana,Energy,950000,pending,2024-02-15,Vikram Patel,1234567894
+6,3,Ayushman Bharat,Health,4500000,completed,2024-01-25,Meera Joshi,1234567895
+7,3,Ayushman Bharat,Health,3800000,completed,2024-03-10,Rahul Verma,1234567896
+8,4,PM Kisan,Agriculture,2100000,completed,2024-02-01,Kavita Reddy,1234567897
+9,4,PM Kisan,Agriculture,1900000,completed,2024-03-15,Sanjay Gupta,1234567898
+10,5,Digital India,Technology,800000,completed,2024-01-30,Neha Agarwal,1234567899
+11,5,Digital India,Technology,750000,pending,2024-02-20,Rohit Malhotra,1234567900
+12,6,Swachh Bharat,Sanitation,1100000,completed,2024-01-10,Pooja Nair,1234567901
+13,6,Swachh Bharat,Sanitation,1300000,completed,2024-03-20,Arun Iyer,1234567902
+14,7,Make in India,Industry,5600000,completed,2024-02-05,Deepak Khanna,1234567903
+15,7,Make in India,Industry,4800000,pending,2024-03-01,Shalini Rao,1234567904
+16,8,Skill India,Education,1700000,completed,2024-01-18,Manoj Pillai,1234567905
+17,8,Skill India,Education,1400000,completed,2024-02-25,Ritu Bhatt,1234567906
+18,1,PM Awas Yojana,Housing,900000,completed,2024-03-12,Suresh Thakur,1234567907
+19,3,Ayushman Bharat,Health,2200000,completed,2024-02-28,Geeta Rawat,1234567908
+20,4,PM Kisan,Agriculture,3100000,pending,2024-03-08,Vinod Chauhan,1234567909
