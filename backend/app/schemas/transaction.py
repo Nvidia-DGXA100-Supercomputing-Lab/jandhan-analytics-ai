@@ -8,6 +8,8 @@ class TransactionBase(BaseModel):
     amount: float
     status: str
     date: str
+    recipient_name: Optional[str] = None
+    recipient_account: Optional[str] = None
 
 class TransactionCreate(TransactionBase):
     pass
@@ -26,3 +28,6 @@ class TransactionResponse(BaseModel):
     amount: float
     status: str
     date: str
+    recipient_name: Optional[str] = None
+    recipient_account: Optional[str] = None
+    created_at: datetime

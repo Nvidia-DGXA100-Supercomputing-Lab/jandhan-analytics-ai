@@ -5,6 +5,7 @@ import { ProtectedRoute } from "@/components/auth/ProtectedRoute";
 import { DashboardLayout } from "@/components/layout/DashboardLayout";
 import { Card } from "@/components/ui/Card";
 import { Loading } from "@/components/ui/Loading";
+import { analyticsApi } from "@/lib/api";
 import { SpendingChart } from "@/components/Charts/SpendingChart";
 import { TrendChart } from "@/components/Charts/TrendChart";
 import { DollarSign, BarChart3, PieChart, TrendingUp } from "lucide-react";
@@ -24,20 +25,13 @@ function AnalyticsContent() {
       setError(null);
       try {
         const [trendRes, categoryRes] = await Promise.all([
-          fetch("/api/analytics/spending-trends/"),
-          fetch("/api/analytics/category-breakdown/"),
+          analyticsApi.getSpendingTrends(),
+          analyticsApi.getCategoryBreakdown(),
         ]);
 
-        if (!trendRes.ok || !categoryRes.ok) {
-          throw new Error("Failed to load analytics data");
-        }
-
-        const trendJson = await trendRes.json();
-        const categoryJson = await categoryRes.json();
-
         if (!cancelled) {
-          setTrendData(trendJson);
-          setCategoryData(categoryJson);
+          setTrendData(trendRes);
+          setCategoryData(categoryRes);
         }
       } catch (err) {
         if (!cancelled) {

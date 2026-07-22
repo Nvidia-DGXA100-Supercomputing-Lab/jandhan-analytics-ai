@@ -2,6 +2,7 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 from sqlalchemy import func
 from statistics import mean, stdev
+from datetime import datetime
 from app.database.session import get_db
 from app.models.transaction import Transaction
 
@@ -22,6 +23,7 @@ def detect_anomalies(db: Session = Depends(get_db)):
         monthly_amounts.setdefault(month, []).append(t.amount)
 
     anomalies = []
+    anomaly_id = 1
 
     for dept, amounts in dept_amounts.items():
         if len(amounts) < 2:
@@ -34,13 +36,18 @@ def detect_anomalies(db: Session = Depends(get_db)):
                 severity = "high" if abs(z) > 2 else "medium" if abs(z) > 1.5 else "low"
                 if abs(z) > 1.5:
                     anomalies.append({
+                        "id": f"anomaly-{anomaly_id}",
+                        "transaction_id": str(t.id),
                         "type": "department_outlier",
-                        "department": dept,
-                        "transaction_id": t.id,
-                        "amount": t.amount,
                         "severity": severity,
-                        "message": f"Outlier in {dept}: ₹{t.amount:,.0f} (avg: ₹{avg:,.0f})",
+                        "description": f"Outlier in {dept}: ₹{t.amount:,.0f} (avg: ₹{avg:,.0f})",
+                        "confidence": min(abs(z) / 3, 1.0),
+                        "detected_at": datetime.utcnow().isoformat(),
+                        "status": "open",
+                        "amount": t.amount,
+                        "department": dept,
                     })
+                    anomaly_id += 1
 
     for month, amounts in monthly_amounts.items():
         if len(amounts) < 2:
@@ -52,12 +59,18 @@ def detect_anomalies(db: Session = Depends(get_db)):
         severity = "high" if abs(z) > 2 else "medium" if abs(z) > 1.5 else "low"
         if abs(z) > 1.5:
             anomalies.append({
+                "id": f"anomaly-{anomaly_id}",
+                "transaction_id": "N/A",
                 "type": "monthly_outlier",
-                "month": month,
-                "total_amount": total,
                 "severity": severity,
-                "message": f"Unusual spending in {month}: ₹{total:,.0f} (avg: ₹{avg:,.0f})",
+                "description": f"Unusual spending in {month}: ₹{total:,.0f} (avg: ₹{avg:,.0f})",
+                "confidence": min(abs(z) / 3, 1.0),
+                "detected_at": datetime.utcnow().isoformat(),
+                "status": "open",
+                "amount": total,
+                "department": "All",
             })
+            anomaly_id += 1
 
     anomalies.sort(key=lambda x: x["severity"], reverse=True)
     return {"anomalies": anomalies}

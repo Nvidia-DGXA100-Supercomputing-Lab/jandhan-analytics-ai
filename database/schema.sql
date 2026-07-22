@@ -23,10 +23,11 @@ CREATE TABLE IF NOT EXISTS schemes (
     budget FLOAT,
     beneficiaries INTEGER,
     description TEXT,
-    status VARCHAR(50),
+    status VARCHAR(50) DEFAULT 'active',
     category VARCHAR(100),
     start_date VARCHAR(50),
     end_date VARCHAR(50),
+    spent FLOAT DEFAULT 0.0,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -55,7 +56,8 @@ CREATE TABLE IF NOT EXISTS reports (
     date VARCHAR(50),
     size VARCHAR(50),
     url VARCHAR(500),
-    status VARCHAR(50)
+    status VARCHAR(50) DEFAULT 'completed',
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE INDEX IF NOT EXISTS ix_reports_id ON reports(id);

@@ -11,4 +11,5 @@ class Report(Base):
     date = Column(String, nullable=False)
     size = Column(String, nullable=False)
     url = Column(String)
+    status = Column(String, default="completed")
     created_at = Column(DateTime(timezone=True), server_default=func.now())

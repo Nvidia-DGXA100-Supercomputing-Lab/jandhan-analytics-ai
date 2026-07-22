@@ -150,7 +150,7 @@ export const transactionsApi = {
     limit?: number;
     scheme_id?: string;
     status?: string;
-  }): Promise<{ results: import("@/types").Transaction[]; count: number }> => {
+  }): Promise<import("@/types").Transaction[]> => {
     const searchParams = new URLSearchParams();
     if (params?.page) searchParams.set("page", params.page.toString());
     if (params?.limit) searchParams.set("limit", params.limit.toString());
@@ -158,7 +158,7 @@ export const transactionsApi = {
     if (params?.status) searchParams.set("status", params.status);
 
     const query = searchParams.toString();
-    return apiRequest<{ results: import("@/types").Transaction[]; count: number }>(`/transactions${query ? `?${query}` : ""}`);
+    return apiRequest<import("@/types").Transaction[]>(`/transactions${query ? `?${query}` : ""}`);
   },
 
   getTransaction: async (id: string): Promise<import("@/types").Transaction> => {
@@ -172,7 +172,7 @@ export const schemesApi = {
     limit?: number;
     category?: string;
     status?: string;
-  }): Promise<{ results: import("@/types").Scheme[]; count: number }> => {
+  }): Promise<import("@/types").Scheme[]> => {
     const searchParams = new URLSearchParams();
     if (params?.page) searchParams.set("page", params.page.toString());
     if (params?.limit) searchParams.set("limit", params.limit.toString());
@@ -180,7 +180,7 @@ export const schemesApi = {
     if (params?.status) searchParams.set("status", params.status);
 
     const query = searchParams.toString();
-    return apiRequest<{ results: import("@/types").Scheme[]; count: number }>(`/schemes${query ? `?${query}` : ""}`);
+    return apiRequest<import("@/types").Scheme[]>(`/schemes${query ? `?${query}` : ""}`);
   },
 
   getScheme: async (id: string): Promise<import("@/types").Scheme> => {
@@ -253,6 +253,48 @@ export const anomalyApi = {
       method: "POST",
       body: JSON.stringify({ resolution }),
     });
+  },
+};
+
+export const uploadApi = {
+  uploadTransactions: async (file: File): Promise<{ imported: number; errors: string[]; message: string }> => {
+    const formData = new FormData();
+    formData.append("file", file);
+    const token = getToken();
+    const headers: HeadersInit = {};
+    if (token) {
+      (headers as Record<string, string>)["Authorization"] = `Bearer ${token}`;
+    }
+    const response = await fetch(`${API_BASE_URL}/upload/transactions/csv/`, {
+      method: "POST",
+      headers,
+      body: formData,
+    });
+    if (!response.ok) {
+      const errorData = (await response.json()) as ApiError;
+      throw new Error(errorData.detail || `HTTP error! status: ${response.status}`);
+    }
+    return (await response.json()) as { imported: number; errors: string[]; message: string };
+  },
+
+  uploadSchemes: async (file: File): Promise<{ imported: number; errors: string[]; message: string }> => {
+    const formData = new FormData();
+    formData.append("file", file);
+    const token = getToken();
+    const headers: HeadersInit = {};
+    if (token) {
+      (headers as Record<string, string>)["Authorization"] = `Bearer ${token}`;
+    }
+    const response = await fetch(`${API_BASE_URL}/upload/schemes/csv/`, {
+      method: "POST",
+      headers,
+      body: formData,
+    });
+    if (!response.ok) {
+      const errorData = (await response.json()) as ApiError;
+      throw new Error(errorData.detail || `HTTP error! status: ${response.status}`);
+    }
+    return (await response.json()) as { imported: number; errors: string[]; message: string };
   },
 };
 

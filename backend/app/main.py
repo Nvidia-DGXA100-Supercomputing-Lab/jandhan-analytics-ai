@@ -9,7 +9,7 @@ from fastapi.responses import JSONResponse
 from app.core.config import settings
 from app.database.session import engine, get_db
 from app.models import user, transaction, scheme, report
-from app.api import auth, dashboard, analytics, transactions, chatbot, forecasting, reports, schemes, admin, anomaly, report_generation
+from app.api import auth, dashboard, analytics, transactions, chatbot, forecasting, reports, schemes, admin, anomaly, report_generation, upload
 from app.database.seed import seed_database
 
 user.Base.metadata.create_all(bind=engine)
@@ -46,6 +46,7 @@ app.include_router(schemes.router, prefix=f"{settings.API_V1_STR}/schemes", tags
 app.include_router(admin.router, prefix=f"{settings.API_V1_STR}/admin", tags=["admin"])
 app.include_router(anomaly.router, prefix=f"{settings.API_V1_STR}/anomaly", tags=["anomaly"])
 app.include_router(report_generation.router, prefix=f"{settings.API_V1_STR}/reports/generate", tags=["report-generation"])
+app.include_router(upload.router, prefix=f"{settings.API_V1_STR}/upload", tags=["upload"])
 
 @app.on_event("startup")
 def startup_event():

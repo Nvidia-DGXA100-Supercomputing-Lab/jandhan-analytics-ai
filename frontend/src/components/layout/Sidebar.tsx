@@ -16,6 +16,7 @@ import {
   List,
   FolderOpen,
   AlertTriangle,
+  Upload,
 } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
 import { cn } from "@/lib/utils";
@@ -29,6 +30,7 @@ const navItems = [
   { href: "/chatbot", label: "AI Assistant", icon: "MessageSquare" },
   { href: "/reports", label: "Reports", icon: "FileText" },
   { href: "/anomaly", label: "Anomaly Detection", icon: "AlertTriangle" },
+  { href: "/upload", label: "Upload Data", icon: "Upload" },
 ];
 
 const iconMap: Record<string, React.ElementType> = {
@@ -42,6 +44,7 @@ const iconMap: Record<string, React.ElementType> = {
   List,
   FolderOpen,
   AlertTriangle,
+  Upload,
   ChevronLeft,
   ChevronRight,
 };

@@ -8,6 +8,11 @@ class SchemeBase(BaseModel):
     budget: float
     beneficiaries: int
     description: Optional[str] = None
+    status: Optional[str] = "active"
+    category: Optional[str] = None
+    start_date: Optional[str] = None
+    end_date: Optional[str] = None
+    spent: Optional[float] = 0.0
 
 class SchemeCreate(SchemeBase):
     pass
@@ -25,6 +30,7 @@ class ReportBase(BaseModel):
     date: str
     size: str
     url: Optional[str] = None
+    status: Optional[str] = "completed"
 
 class ReportCreate(ReportBase):
     pass

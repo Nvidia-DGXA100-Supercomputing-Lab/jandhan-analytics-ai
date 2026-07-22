@@ -12,7 +12,7 @@ import { Search } from "lucide-react";
 import type { Transaction } from "@/types";
 
 function TransactionsContent() {
-  const { data, status, error, execute } = useApi<{ results: Transaction[]; count: number }>(() => transactionsApi.getTransactions());
+  const { data, status, error, execute } = useApi<Transaction[]>(() => transactionsApi.getTransactions());
   const [search, setSearch] = useState("");
   const [statusFilter, setStatusFilter] = useState("");
 
@@ -21,13 +21,13 @@ function TransactionsContent() {
   }, [execute]);
 
   const filtered = useMemo(() => {
-    const results = data?.results ?? [];
+    const results = data ?? [];
     return results.filter((t) => {
       const matchesSearch = !search || t.recipient_name.toLowerCase().includes(search.toLowerCase()) || t.scheme_id.toLowerCase().includes(search.toLowerCase());
       const matchesStatus = !statusFilter || t.status === statusFilter;
       return matchesSearch && matchesStatus;
     });
-  }, [data?.results, search, statusFilter]);
+  }, [data, search, statusFilter]);
 
   const formatCurrency = (value: number) => `₹${value.toLocaleString("en-IN")}`;
   const formatDate = (dateStr: string) => new Date(dateStr).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" });
@@ -64,7 +64,7 @@ function TransactionsContent() {
     );
   }
 
-  const statuses = Array.from(new Set((data?.results ?? []).map((t) => t.status)));
+  const statuses = Array.from(new Set((data ?? []).map((t) => t.status)));
 
   return (
     <div className="space-y-6">

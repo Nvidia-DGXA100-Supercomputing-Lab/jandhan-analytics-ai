@@ -12,7 +12,7 @@ import { Search } from "lucide-react";
 import type { Scheme } from "@/types";
 
 function SchemesContent() {
-  const { data, status, error, execute } = useApi<{ results: Scheme[]; count: number }>(() => schemesApi.getSchemes());
+  const { data, status, error, execute } = useApi<Scheme[]>(() => schemesApi.getSchemes());
   const [search, setSearch] = useState("");
   const [categoryFilter, setCategoryFilter] = useState("");
 
@@ -21,13 +21,13 @@ function SchemesContent() {
   }, [execute]);
 
   const filtered = useMemo(() => {
-    const results = data?.results ?? [];
+    const results = data ?? [];
     return results.filter((s) => {
       const matchesSearch = !search || s.name.toLowerCase().includes(search.toLowerCase()) || s.description.toLowerCase().includes(search.toLowerCase());
       const matchesCategory = !categoryFilter || s.category === categoryFilter;
       return matchesSearch && matchesCategory;
     });
-  }, [data?.results, search, categoryFilter]);
+  }, [data, search, categoryFilter]);
 
   const formatCurrency = (value: number) => `₹${value.toLocaleString("en-IN")}`;
   const formatDate = (dateStr: string) => new Date(dateStr).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" });
@@ -70,7 +70,7 @@ function SchemesContent() {
     );
   }
 
-  const categories = Array.from(new Set((data?.results ?? []).map((s) => s.category)));
+  const categories = Array.from(new Set((data ?? []).map((s) => s.category)));
 
   return (
     <div className="space-y-6">

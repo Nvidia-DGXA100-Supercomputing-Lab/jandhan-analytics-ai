@@ -11,4 +11,6 @@ class Transaction(Base):
     amount = Column(Float, nullable=False)
     status = Column(String, nullable=False)
     date = Column(String, nullable=False)
+    recipient_name = Column(String)
+    recipient_account = Column(String)
     created_at = Column(DateTime(timezone=True), server_default=func.now())
