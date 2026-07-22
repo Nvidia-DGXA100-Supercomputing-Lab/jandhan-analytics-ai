@@ -1,0 +1,49 @@
+services:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:8000/api
+    depends_on:
+      - backend
+    networks:
+      - jandhan-network
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://jandhan:jandhan123@db:5432/jandhan_db
+      - SECRET_KEY=your-production-secret-key-change-this
+      - ALGORITHM=HS256
+      - ACCESS_TOKEN_EXPIRE_MINUTES=11520
+    depends_on:
+      - db
+    networks:
+      - jandhan-network
+
+  db:
+    image: postgres:15-alpine
+    environment:
+      - POSTGRES_USER=jandhan
+      - POSTGRES_PASSWORD=jandhan123
+      - POSTGRES_DB=jandhan_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - jandhan-network
+
+volumes:
+  postgres_data:
+
+networks:
+  jandhan-network:
+    driver: bridge

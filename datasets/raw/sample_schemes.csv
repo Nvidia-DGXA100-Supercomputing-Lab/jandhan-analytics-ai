@@ -1,0 +1,9 @@
+name,department,budget,beneficiaries,description,status,category,start_date,end_date
+PM Awas Yojana,Housing,500000000,2000000,Housing for all scheme,active,Housing,2024-01-01,2026-12-31
+Ujjwala Yojana,Energy,300000000,5000000,Free LPG connections,active,Energy,2024-01-01,2025-12-31
+Ayushman Bharat,Health,800000000,10000000,Health insurance for poor,active,Health,2024-01-01,2027-12-31
+PM Kisan,Agriculture,600000000,7500000,Income support to farmers,active,Agriculture,2024-01-01,2025-12-31
+Digital India,Technology,200000000,3000000,Digital infrastructure,active,Technology,2024-01-01,2026-12-31
+Swachh Bharat,Sanitation,150000000,4000000,Clean India mission,active,Sanitation,2024-01-01,2025-12-31
+Make in India,Industry,400000000,1500000,Boost manufacturing,active,Industry,2024-01-01,2027-12-31
+Skill India,Education,250000000,5000000,Skill development,active,Education,2024-01-01,2026-12-31
