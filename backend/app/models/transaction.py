@@ -8,6 +8,7 @@ class Transaction(Base):
     id = Column(Integer, primary_key=True, index=True)
     scheme = Column(String, nullable=False)
     department = Column(String, nullable=False)
+    state = Column(String, nullable=False)
     amount = Column(Float, nullable=False)
     status = Column(String, nullable=False)
     date = Column(String, nullable=False)

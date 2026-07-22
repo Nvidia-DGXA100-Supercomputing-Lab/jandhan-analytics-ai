@@ -68,8 +68,8 @@ def get_scheme_utilization(db: Session = Depends(get_db)):
 @router.get("/geographic-distribution/")
 def get_geographic_distribution(db: Session = Depends(get_db)):
     districts = (
-        db.query(Transaction.department, func.sum(Transaction.amount))
-        .group_by(Transaction.department)
+        db.query(Transaction.state, func.sum(Transaction.amount))
+        .group_by(Transaction.state)
         .all()
     )
     return [{"state": d, "amount": a} for d, a in districts]

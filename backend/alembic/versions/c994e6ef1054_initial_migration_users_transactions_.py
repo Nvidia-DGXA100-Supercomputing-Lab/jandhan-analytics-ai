@@ -44,6 +44,7 @@ def upgrade() -> None:
         sa.Column('category', sa.String(), nullable=True),
         sa.Column('start_date', sa.String(), nullable=True),
         sa.Column('end_date', sa.String(), nullable=True),
+        sa.Column('spent', sa.Float(), nullable=True),
         sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=True),
         sa.PrimaryKeyConstraint('id')
     )
@@ -54,6 +55,7 @@ def upgrade() -> None:
         sa.Column('id', sa.Integer(), nullable=False),
         sa.Column('scheme', sa.String(), nullable=True),
         sa.Column('department', sa.String(), nullable=True),
+        sa.Column('state', sa.String(), nullable=False),
         sa.Column('amount', sa.Float(), nullable=True),
         sa.Column('status', sa.String(), nullable=True),
         sa.Column('date', sa.String(), nullable=True),
@@ -73,6 +75,7 @@ def upgrade() -> None:
         sa.Column('size', sa.String(), nullable=True),
         sa.Column('url', sa.String(), nullable=True),
         sa.Column('status', sa.String(), nullable=True),
+        sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=True),
         sa.PrimaryKeyConstraint('id')
     )
     op.create_index(op.f('ix_reports_id'), 'reports', ['id'], unique=False)

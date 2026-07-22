@@ -5,6 +5,7 @@ from typing import Optional
 class TransactionBase(BaseModel):
     scheme: str
     department: str
+    state: str
     amount: float
     status: str
     date: str
@@ -25,6 +26,7 @@ class TransactionResponse(BaseModel):
     id: int
     scheme: str
     department: str
+    state: str
     amount: float
     status: str
     date: str

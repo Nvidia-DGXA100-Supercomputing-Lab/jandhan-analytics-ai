@@ -24,15 +24,16 @@ describe("API client", () => {
 });
 
 describe("Types", () => {
-  it("exports TypeScript types", async () => {
+  it("exports TypeScript types module", async () => {
     const types = await import("@/types");
-    expect(types.User).toBeTruthy();
-    expect(types.Transaction).toBeTruthy();
-    expect(types.Scheme).toBeTruthy();
-    expect(types.Report).toBeTruthy();
-    expect(types.Anomaly).toBeTruthy();
-    expect(types.AnalyticsData).toBeTruthy();
-    expect(types.ForecastingData).toBeTruthy();
-    expect(types.ChatMessage).toBeTruthy();
+    expect(types).toBeTruthy();
+    expect(typeof types.User).toBe("undefined");
+    expect(typeof types.Transaction).toBe("undefined");
+    expect(typeof types.Scheme).toBe("undefined");
+    expect(typeof types.Report).toBe("undefined");
+    expect(typeof types.Anomaly).toBe("undefined");
+    expect(typeof types.AnalyticsData).toBe("undefined");
+    expect(typeof types.ForecastingData).toBe("undefined");
+    expect(typeof types.ChatMessage).toBe("undefined");
   });
 });

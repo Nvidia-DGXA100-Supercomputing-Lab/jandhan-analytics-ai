@@ -8,12 +8,14 @@ import { Loading } from "@/components/ui/Loading";
 import { analyticsApi } from "@/lib/api";
 import { SpendingChart } from "@/components/Charts/SpendingChart";
 import { TrendChart } from "@/components/Charts/TrendChart";
+import { StateSpendingMap } from "@/components/Map/StateSpendingMap";
 import { DollarSign, BarChart3, PieChart, TrendingUp } from "lucide-react";
 import type { AnalyticsData } from "@/types";
 
 function AnalyticsContent() {
   const [trendData, setTrendData] = useState<AnalyticsData["spending_trend"]>([]);
   const [categoryData, setCategoryData] = useState<AnalyticsData["category_breakdown"]>([]);
+  const [geoData, setGeoData] = useState<{ state: string; amount: number }[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -24,14 +26,16 @@ function AnalyticsContent() {
       setLoading(true);
       setError(null);
       try {
-        const [trendRes, categoryRes] = await Promise.all([
+        const [trendRes, categoryRes, geoRes] = await Promise.all([
           analyticsApi.getSpendingTrends(),
           analyticsApi.getCategoryBreakdown(),
+          analyticsApi.getGeographicDistribution(),
         ]);
 
         if (!cancelled) {
           setTrendData(trendRes);
           setCategoryData(categoryRes);
+          setGeoData(geoRes);
         }
       } catch (err) {
         if (!cancelled) {
@@ -120,6 +124,10 @@ function AnalyticsContent() {
             <p className="text-sm text-gray-500 dark:text-slate-400">No trend data available</p>
           )}
         </Card>
+
+        <div className="lg:col-span-2">
+          <StateSpendingMap data={geoData} title="State-wise Spending" description="Geographic distribution of spending" />
+        </div>
       </div>
     </div>
   );
