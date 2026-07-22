@@ -1,0 +1,86 @@
+- generic [active] [ref=f7e1]:
+  - button "Open Next.js Dev Tools" [ref=f7e9] [cursor=pointer]
+  - alert [ref=f7e13]
+  - generic [ref=f7e14]:
+    - generic [ref=f7e15]:
+      - heading "Schemes" [level=2] [ref=f7e16]
+      - paragraph [ref=f7e17]: Browse and manage government schemes
+    - generic [ref=f7e19]:
+      - generic [ref=f7e20]:
+        - textbox "Search schemes..." [ref=f7e25]
+        - combobox [ref=f7e26]:
+          - option "All Categories" [selected]
+          - option "Housing"
+          - option "Energy"
+          - option "Health"
+          - option "Agriculture"
+          - option "Technology"
+          - option "Sanitation"
+          - option "Industry"
+          - option "Education"
+      - table [ref=f7e28]:
+        - rowgroup [ref=f7e29]:
+          - row [ref=f7e30]:
+            - columnheader "Scheme Name" [ref=f7e31] [cursor=pointer]
+            - columnheader "Category" [ref=f7e33] [cursor=pointer]
+            - columnheader "Budget" [ref=f7e35] [cursor=pointer]
+            - columnheader "Spent" [ref=f7e37] [cursor=pointer]
+            - columnheader "Status" [ref=f7e39] [cursor=pointer]
+            - columnheader "Start Date" [ref=f7e41] [cursor=pointer]
+        - rowgroup [ref=f7e43]:
+          - row [ref=f7e44]:
+            - cell "PM Awas Yojana" [ref=f7e45]
+            - cell "Housing" [ref=f7e46]
+            - cell "₹50,00,00,000" [ref=f7e47]
+            - cell "₹4,50,00,000" [ref=f7e48]
+            - cell "active" [ref=f7e49]
+            - cell "1 Jan 2024" [ref=f7e51]
+          - row [ref=f7e52]:
+            - cell "Ujjwala Yojana" [ref=f7e53]
+            - cell "Energy" [ref=f7e54]
+            - cell "₹30,00,00,000" [ref=f7e55]
+            - cell "₹2,85,00,000" [ref=f7e56]
+            - cell "active" [ref=f7e57]
+            - cell "1 Jan 2024" [ref=f7e59]
+          - row [ref=f7e60]:
+            - cell "Ayushman Bharat" [ref=f7e61]
+            - cell "Health" [ref=f7e62]
+            - cell "₹80,00,00,000" [ref=f7e63]
+            - cell "₹8,30,00,000" [ref=f7e64]
+            - cell "active" [ref=f7e65]
+            - cell "1 Jan 2024" [ref=f7e67]
+          - row [ref=f7e68]:
+            - cell "PM Kisan" [ref=f7e69]
+            - cell "Agriculture" [ref=f7e70]
+            - cell "₹60,00,00,000" [ref=f7e71]
+            - cell "₹4,00,00,000" [ref=f7e72]
+            - cell "active" [ref=f7e73]
+            - cell "1 Jan 2024" [ref=f7e75]
+          - row [ref=f7e76]:
+            - cell "Digital India" [ref=f7e77]
+            - cell "Technology" [ref=f7e78]
+            - cell "₹20,00,00,000" [ref=f7e79]
+            - cell "₹1,55,00,000" [ref=f7e80]
+            - cell "active" [ref=f7e81]
+            - cell "1 Jan 2024" [ref=f7e83]
+          - row [ref=f7e84]:
+            - cell "Swachh Bharat" [ref=f7e85]
+            - cell "Sanitation" [ref=f7e86]
+            - cell "₹15,00,00,000" [ref=f7e87]
+            - cell "₹1,12,50,000" [ref=f7e88]
+            - cell "active" [ref=f7e89]
+            - cell "1 Jan 2024" [ref=f7e91]
+          - row [ref=f7e92]:
+            - cell "Make in India" [ref=f7e93]
+            - cell "Industry" [ref=f7e94]
+            - cell "₹40,00,00,000" [ref=f7e95]
+            - cell "₹5,60,00,000" [ref=f7e96]
+            - cell "active" [ref=f7e97]
+            - cell "1 Jan 2024" [ref=f7e99]
+          - row [ref=f7e100]:
+            - cell "Skill India" [ref=f7e101]
+            - cell "Education" [ref=f7e102]
+            - cell "₹25,00,00,000" [ref=f7e103]
+            - cell "₹1,90,00,000" [ref=f7e104]
+            - cell "active" [ref=f7e105]
+            - cell "1 Jan 2024" [ref=f7e107]

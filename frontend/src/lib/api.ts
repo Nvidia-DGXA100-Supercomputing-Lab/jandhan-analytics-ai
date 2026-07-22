@@ -1,6 +1,6 @@
 import { AuthResponse, LoginRequest, RegisterRequest, ApiError } from "@/types";
 
-const API_BASE_URL = "http://localhost:8000/api";
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "/api";
 
 const getToken = (): string | null => {
   if (typeof window === "undefined") return null;

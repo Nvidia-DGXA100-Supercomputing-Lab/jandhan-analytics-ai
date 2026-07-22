@@ -1,0 +1,56 @@
+- generic [active] [ref=f8e1]:
+  - button "Open Next.js Dev Tools" [ref=f8e9] [cursor=pointer]
+  - alert [ref=f8e13]
+  - generic [ref=f8e14]:
+    - generic [ref=f8e15]:
+      - heading "Analytics" [level=2] [ref=f8e16]
+      - paragraph [ref=f8e17]: Department-wise spending and trends
+    - generic [ref=f8e18]:
+      - generic [ref=f8e25]:
+        - paragraph [ref=f8e26]: Total Spending
+        - paragraph [ref=f8e27]: ₹5,83,00,000
+      - generic [ref=f8e34]:
+        - paragraph [ref=f8e35]: Categories
+        - paragraph [ref=f8e36]: "8"
+      - generic [ref=f8e44]:
+        - paragraph [ref=f8e45]: Data Points
+        - paragraph [ref=f8e46]: "3"
+      - generic [ref=f8e54]:
+        - paragraph [ref=f8e55]: Avg Monthly
+        - paragraph [ref=f8e56]: ₹1,94,33,333
+    - generic [ref=f8e57]:
+      - generic [ref=f8e58]:
+        - generic [ref=f8e60]:
+          - heading "Department-wise Spending" [level=3] [ref=f8e61]
+          - paragraph [ref=f8e62]: Spending by category
+        - img [ref=f8e68]:
+          - generic [ref=f8e73]:
+            - generic [ref=f8e74]: Technology
+            - generic [ref=f8e76]: Health
+            - generic [ref=f8e78]: Housing
+            - generic [ref=f8e80]: Sanitation
+            - generic [ref=f8e82]: Industry
+            - generic [ref=f8e84]: Energy
+            - generic [ref=f8e86]: Education
+          - generic [ref=f8e89]:
+            - generic [ref=f8e90]: "0"
+            - generic [ref=f8e92]: "3500000"
+            - generic [ref=f8e94]: "7000000"
+            - generic [ref=f8e96]: "10500000"
+            - generic [ref=f8e98]: "14000000"
+      - generic [ref=f8e119]:
+        - generic [ref=f8e121]:
+          - heading "Spending Trend" [level=3] [ref=f8e122]
+          - paragraph [ref=f8e123]: Monthly spending trend
+        - img [ref=f8e129]:
+          - generic [ref=f8e134]:
+            - generic [ref=f8e135]: 2024-01
+            - generic [ref=f8e137]: 2024-02
+            - generic [ref=f8e139]: 2024-03
+          - generic [ref=f8e142]:
+            - generic [ref=f8e143]: "0"
+            - generic [ref=f8e145]: "6000000"
+            - generic [ref=f8e147]: "12000000"
+            - generic [ref=f8e149]: "18000000"
+            - generic [ref=f8e151]: "24000000"
+  - generic [ref=f8e159]: "6000000"
