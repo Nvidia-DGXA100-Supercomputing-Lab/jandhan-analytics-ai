@@ -56,20 +56,20 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gray-50 dark:bg-slate-950 px-4 transition-colors duration-300">
-      <Card className="w-full max-w-md dark:bg-slate-900 dark:border-slate-800">
+    <div className="flex min-h-screen items-center justify-center bg-slate-950 px-4">
+      <Card className="w-full max-w-md bg-slate-900 border-slate-800 shadow-xl">
         <div className="mb-6 text-center">
           <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary-600 text-white">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+              <path strokeLinecap="round" strokeLinejoin="round" d="M12 15v2m-6 4h12a2 0 0 002-2v-6a2 0 0 00-2-2H6a2 0 0 00-2 2v6a2 0 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
             </svg>
           </div>
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Sign in to JanDhan</h1>
-          <p className="mt-2 text-sm text-gray-600 dark:text-slate-400">AI-Powered Public Spending Transparency Platform</p>
+          <h1 className="text-2xl font-bold text-white">Sign in to JanDhan</h1>
+          <p className="mt-2 text-sm text-slate-400">AI-Powered Public Spending Transparency Platform</p>
         </div>
 
         {submitError && (
-          <div className="mb-4 rounded-md bg-red-50 dark:bg-red-900/20 p-3 text-sm text-red-600 dark:text-red-400">{submitError}</div>
+          <div className="mb-4 rounded-md bg-red-900/20 border border-red-800 p-3 text-sm text-red-400">{submitError}</div>
         )}
 
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -80,9 +80,9 @@ export default function LoginPage() {
           </Button>
         </form>
 
-        <p className="mt-6 text-center text-sm text-gray-600 dark:text-slate-400">
+        <p className="mt-6 text-center text-sm text-slate-400">
           Don&apos;t have an account?{" "}
-          <Link href="/register" className="font-medium text-primary-600 hover:text-primary-500">
+          <Link href="/register" className="font-medium text-primary-400 hover:text-primary-300">
             Sign up
           </Link>
         </p>

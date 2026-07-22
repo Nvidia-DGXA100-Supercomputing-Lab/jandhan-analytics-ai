@@ -1,0 +1,117 @@
+- generic [ref=f14e1]:
+  - generic [active]:
+    - generic [ref=f14e6]:
+      - generic [ref=f14e7]:
+        - navigation [ref=f14e9]:
+          - button [disabled] [ref=f14e10]:
+            - img "previous" [ref=f14e11]
+          - generic [ref=f14e13]:
+            - generic [ref=f14e14]: 1/
+            - text: "1"
+          - button [disabled] [ref=f14e15]:
+            - img "next" [ref=f14e16]
+        - link "Next.js 16.2.10 (stale) Turbopack" [ref=f14e19] [cursor=pointer]:
+          - /url: https://nextjs.org/docs/messages/version-staleness
+          - generic "There is a newer version (16.2.11) available, upgrade recommended!" [ref=f14e22]: Next.js 16.2.10 (stale)
+          - generic [ref=f14e23]: Turbopack
+      - dialog "Runtime TypeError" [ref=f14e25]:
+        - generic [ref=f14e28]:
+          - generic [ref=f14e29]:
+            - generic [ref=f14e30]:
+              - generic [ref=f14e31]: Runtime TypeError
+              - generic [ref=f14e33]:
+                - button "Copy Error Info" [ref=f14e34] [cursor=pointer]
+                - button "No related documentation found" [disabled] [ref=f14e37]
+                - button "Attach Node.js inspector" [ref=f14e40] [cursor=pointer]
+            - generic [ref=f14e49]: data?.filter is not a function
+          - generic [ref=f14e52]:
+            - paragraph [ref=f14e54]:
+              - text: Call Stack
+              - generic [ref=f14e55]: "14"
+            - generic [ref=f14e56]:
+              - generic [ref=f14e57]:
+                - text: AnomalyContent
+                - button "Sourcemapping failed. Click to log cause of error." [ref=f14e58] [cursor=pointer]
+              - text: file:///C:/Users/Ankit%20Singh%20Tomar/jandhan-analytics-ai/frontend/.next/dev/static/chunks/src_02xkj4f._.js (891:37)
+            - generic [ref=f14e61]:
+              - generic [ref=f14e62]:
+                - text: Object.react_stack_bottom_frame
+                - button "Sourcemapping failed. Click to log cause of error." [ref=f14e63] [cursor=pointer]
+              - text: file:///C:/Users/Ankit%20Singh%20Tomar/jandhan-analytics-ai/frontend/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js (15037:24)
+            - generic [ref=f14e66]:
+              - generic [ref=f14e67]:
+                - text: renderWithHooks
+                - button "Sourcemapping failed. Click to log cause of error." [ref=f14e68] [cursor=pointer]
+              - text: file:///C:/Users/Ankit%20Singh%20Tomar/jandhan-analytics-ai/frontend/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js (4620:24)
+            - generic [ref=f14e71]:
+              - generic [ref=f14e72]:
+                - text: updateFunctionComponent
+                - button "Sourcemapping failed. Click to log cause of error." [ref=f14e73] [cursor=pointer]
+              - text: file:///C:/Users/Ankit%20Singh%20Tomar/jandhan-analytics-ai/frontend/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js (6081:21)
+            - generic [ref=f14e76]:
+              - generic [ref=f14e77]:
+                - text: beginWork
+                - button "Sourcemapping failed. Click to log cause of error." [ref=f14e78] [cursor=pointer]
+              - text: file:///C:/Users/Ankit%20Singh%20Tomar/jandhan-analytics-ai/frontend/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js (6691:24)
+            - generic [ref=f14e81]:
+              - generic [ref=f14e82]:
+                - text: runWithFiberInDEV
+                - button "Sourcemapping failed. Click to log cause of error." [ref=f14e83] [cursor=pointer]
+              - text: file:///C:/Users/Ankit%20Singh%20Tomar/jandhan-analytics-ai/frontend/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js (965:74)
+            - generic [ref=f14e86]:
+              - generic [ref=f14e87]:
+                - text: performUnitOfWork
+                - button "Sourcemapping failed. Click to log cause of error." [ref=f14e88] [cursor=pointer]
+              - text: file:///C:/Users/Ankit%20Singh%20Tomar/jandhan-analytics-ai/frontend/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js (9555:97)
+            - generic [ref=f14e91]:
+              - generic [ref=f14e92]:
+                - text: workLoopSync
+                - button "Sourcemapping failed. Click to log cause of error." [ref=f14e93] [cursor=pointer]
+              - text: file:///C:/Users/Ankit%20Singh%20Tomar/jandhan-analytics-ai/frontend/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js (9449:40)
+            - generic [ref=f14e96]:
+              - generic [ref=f14e97]:
+                - text: renderRootSync
+                - button "Sourcemapping failed. Click to log cause of error." [ref=f14e98] [cursor=pointer]
+              - text: file:///C:/Users/Ankit%20Singh%20Tomar/jandhan-analytics-ai/frontend/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js (9433:13)
+            - generic [ref=f14e101]:
+              - generic [ref=f14e102]:
+                - text: performWorkOnRoot
+                - button "Sourcemapping failed. Click to log cause of error." [ref=f14e103] [cursor=pointer]
+              - text: file:///C:/Users/Ankit%20Singh%20Tomar/jandhan-analytics-ai/frontend/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js (9098:47)
+            - generic [ref=f14e106]:
+              - generic [ref=f14e107]:
+                - text: performWorkOnRootViaSchedulerTask
+                - button "Sourcemapping failed. Click to log cause of error." [ref=f14e108] [cursor=pointer]
+              - text: file:///C:/Users/Ankit%20Singh%20Tomar/jandhan-analytics-ai/frontend/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js (10255:9)
+            - generic [ref=f14e111]:
+              - generic [ref=f14e112]:
+                - text: MessagePort.performWorkUntilDeadline
+                - button "Sourcemapping failed. Click to log cause of error." [ref=f14e113] [cursor=pointer]
+              - text: file:///C:/Users/Ankit%20Singh%20Tomar/jandhan-analytics-ai/frontend/.next/dev/static/chunks/node_modules_next_dist_compiled_1amofcm._.js (2647:64)
+            - generic [ref=f14e116]:
+              - generic [ref=f14e117]:
+                - text: AnomalyPage
+                - button "Sourcemapping failed. Click to log cause of error." [ref=f14e118] [cursor=pointer]
+              - text: file:///C:/Users/Ankit%20Singh%20Tomar/jandhan-analytics-ai/frontend/.next/dev/static/chunks/src_02xkj4f._.js (1247:225)
+            - generic [ref=f14e121]:
+              - generic [ref=f14e122]:
+                - text: ClientPageRoot
+                - button "Sourcemapping failed. Click to log cause of error." [ref=f14e123] [cursor=pointer]
+              - text: file:///C:/Users/Ankit%20Singh%20Tomar/jandhan-analytics-ai/frontend/.next/dev/static/chunks/node_modules_next_dist_1nyev3z._.js (4688:50)
+        - generic [ref=f14e126]: "1"
+        - generic [ref=f14e127]: "2"
+    - generic [ref=f14e132] [cursor=pointer]:
+      - button "Open Next.js Dev Tools" [ref=f14e133]
+      - generic [ref=f14e137]:
+        - button "Open issues overlay" [ref=f14e138]:
+          - generic [ref=f14e139]:
+            - generic [ref=f14e140]: "0"
+            - generic [ref=f14e141]: "1"
+          - generic [ref=f14e142]: Issue
+        - button "Collapse issues badge" [ref=f14e143]
+  - generic [ref=f14e147]:
+    - heading "This page couldn’t load" [level=1] [ref=f14e150]
+    - paragraph [ref=f14e151]: Reload to try again, or go back.
+    - generic [ref=f14e152]:
+      - button "Reload" [ref=f14e154] [cursor=pointer]
+      - button "Back" [ref=f14e155] [cursor=pointer]

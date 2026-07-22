@@ -114,5 +114,11 @@ function SchemesContent() {
 }
 
 export default function SchemesPage() {
-  return <SchemesContent />;
+  return (
+    <ProtectedRoute>
+      <DashboardLayout title="Schemes">
+        <SchemesContent />
+      </DashboardLayout>
+    </ProtectedRoute>
+  );
 }

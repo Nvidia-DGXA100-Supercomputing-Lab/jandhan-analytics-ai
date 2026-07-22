@@ -195,5 +195,11 @@ function UploadContent() {
 }
 
 export default function UploadPage() {
-  return <UploadContent />;
+  return (
+    <ProtectedRoute>
+      <DashboardLayout title="Upload Data">
+        <UploadContent />
+      </DashboardLayout>
+    </ProtectedRoute>
+  );
 }

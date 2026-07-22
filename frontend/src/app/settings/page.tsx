@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import { ProtectedRoute } from "@/components/auth/ProtectedRoute";
+import { DashboardLayout } from "@/components/layout/DashboardLayout";
 import { Save, Bell, Shield, User } from "lucide-react";
 
 export default function SettingsPage() {
@@ -8,7 +10,9 @@ export default function SettingsPage() {
   const [darkMode, setDarkMode] = useState(false);
 
   return (
-    <div className="max-w-3xl space-y-6">
+    <ProtectedRoute>
+      <DashboardLayout title="Settings">
+        <div className="max-w-3xl space-y-6">
       <div className="bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800 shadow-sm">
         <div className="p-6 border-b border-slate-200 dark:border-slate-800">
           <h3 className="text-lg font-semibold text-slate-900 dark:text-white flex items-center gap-2">
@@ -127,5 +131,7 @@ export default function SettingsPage() {
         </div>
       </div>
     </div>
+    </DashboardLayout>
+    </ProtectedRoute>
   );
 }

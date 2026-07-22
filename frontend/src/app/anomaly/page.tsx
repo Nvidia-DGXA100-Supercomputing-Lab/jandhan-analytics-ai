@@ -133,5 +133,11 @@ function AnomalyContent() {
 }
 
 export default function AnomalyPage() {
-  return <AnomalyContent />;
+  return (
+    <ProtectedRoute>
+      <DashboardLayout title="Anomaly Detection">
+        <AnomalyContent />
+      </DashboardLayout>
+    </ProtectedRoute>
+  );
 }

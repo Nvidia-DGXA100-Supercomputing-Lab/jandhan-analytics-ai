@@ -108,5 +108,11 @@ function TransactionsContent() {
 }
 
 export default function TransactionsPage() {
-  return <TransactionsContent />;
+  return (
+    <ProtectedRoute>
+      <DashboardLayout title="Transactions">
+        <TransactionsContent />
+      </DashboardLayout>
+    </ProtectedRoute>
+  );
 }

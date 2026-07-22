@@ -241,11 +241,13 @@ export const anomalyApi = {
     if (params?.limit) searchParams.set("limit", params.limit.toString());
 
     const query = searchParams.toString();
-    return apiRequest<import("@/types").Anomaly[]>(`/anomaly${query ? `?${query}` : ""}`);
+    const data = await apiRequest<import("@/types").Anomaly[] | { anomalies?: import("@/types").Anomaly[]; value?: import("@/types").Anomaly[] }>(`/anomaly/detection${query ? `?${query}` : ""}`);
+    return Array.isArray(data) ? data : (data?.anomalies ?? data?.value ?? []);
   },
 
   getAnomalyDetection: async (): Promise<import("@/types").Anomaly[]> => {
-    return apiRequest<import("@/types").Anomaly[]>("/anomaly");
+    const data = await apiRequest<import("@/types").Anomaly[] | { anomalies?: import("@/types").Anomaly[]; value?: import("@/types").Anomaly[] }>("/anomaly/detection");
+    return Array.isArray(data) ? data : (data?.anomalies ?? data?.value ?? []);
   },
 
   resolveAnomaly: async (id: string, resolution: string): Promise<{ message: string }> => {

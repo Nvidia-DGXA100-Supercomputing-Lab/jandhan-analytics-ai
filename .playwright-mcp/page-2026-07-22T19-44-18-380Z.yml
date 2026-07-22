@@ -1,0 +1,121 @@
+- generic [active] [ref=f9e1]:
+  - button "Open Next.js Dev Tools" [ref=f9e27] [cursor=pointer]
+  - alert [ref=f9e31]
+  - generic [ref=f9e32]:
+    - complementary [ref=f9e33]:
+      - generic [ref=f9e34]:
+        - generic [ref=f9e35]: JanDhan
+        - button [ref=f9e43] [cursor=pointer]
+      - navigation [ref=f9e46]:
+        - link "Dashboard" [ref=f9e47] [cursor=pointer]:
+          - /url: /dashboard
+        - link "Analytics" [ref=f9e54] [cursor=pointer]:
+          - /url: /analytics
+        - link "Transactions" [ref=f9e58] [cursor=pointer]:
+          - /url: /transactions
+        - link "Schemes" [ref=f9e61] [cursor=pointer]:
+          - /url: /schemes
+        - link "Forecasting" [ref=f9e65] [cursor=pointer]:
+          - /url: /forecasting
+        - link "AI Assistant" [ref=f9e70] [cursor=pointer]:
+          - /url: /chatbot
+        - link "Reports" [ref=f9e74] [cursor=pointer]:
+          - /url: /reports
+        - link "Anomaly Detection" [ref=f9e79] [cursor=pointer]:
+          - /url: /anomaly
+        - link "Upload Data" [ref=f9e83] [cursor=pointer]:
+          - /url: /upload
+      - generic [ref=f9e88]:
+        - generic [ref=f9e94]:
+          - paragraph [ref=f9e95]: admin
+          - paragraph [ref=f9e96]: citizen
+        - button "Logout" [ref=f9e97] [cursor=pointer]
+    - generic [ref=f9e102]:
+      - banner [ref=f9e103]:
+        - heading "Dashboard" [level=1] [ref=f9e105]
+        - generic [ref=f9e106]: AI-Powered Transparency Platform
+      - main [ref=f9e108]:
+        - generic [ref=f9e109]:
+          - generic [ref=f9e110]:
+            - heading "Dashboard" [level=2] [ref=f9e111]
+            - paragraph [ref=f9e112]: Overview of spending and scheme activity
+          - generic [ref=f9e113]:
+            - generic [ref=f9e120]:
+              - paragraph [ref=f9e121]: Total Spending
+              - paragraph [ref=f9e122]: ₹5,83,00,000
+            - generic [ref=f9e130]:
+              - paragraph [ref=f9e131]: Active Schemes
+              - paragraph [ref=f9e132]: "8"
+            - generic [ref=f9e142]:
+              - paragraph [ref=f9e143]: Transactions
+              - paragraph [ref=f9e144]: "25"
+            - generic [ref=f9e152]:
+              - paragraph [ref=f9e153]: Pending Verifications
+              - paragraph [ref=f9e154]: "4"
+          - generic [ref=f9e155]:
+            - generic [ref=f9e156]:
+              - generic [ref=f9e158]:
+                - heading "Spending Trend" [level=3] [ref=f9e159]
+                - paragraph [ref=f9e160]: Monthly spending over time
+              - generic [ref=f9e165]:
+                - img [ref=f9e166]:
+                  - generic [ref=f9e171]:
+                    - generic [ref=f9e172]: 25 Mar 2024
+                    - generic [ref=f9e174]: 20 Mar 2024
+                    - generic [ref=f9e176]: 18 Mar 2024
+                    - generic [ref=f9e178]: 12 Mar 2024
+                  - generic [ref=f9e181]:
+                    - generic [ref=f9e182]: "0"
+                    - generic [ref=f9e184]: "700000"
+                    - generic [ref=f9e186]: "1400000"
+                    - generic [ref=f9e188]: "2100000"
+                    - generic [ref=f9e190]: "2800000"
+                - generic:
+                  - generic:
+                    - paragraph: 15 Mar 2024
+                    - list:
+                      - listitem: "Amount : ₹1,900,000"
+            - generic [ref=f9e202]:
+              - generic [ref=f9e204]:
+                - heading "Recent Transactions" [level=3] [ref=f9e205]
+                - paragraph [ref=f9e206]: Latest 5 transactions
+              - table [ref=f9e209]:
+                - rowgroup [ref=f9e210]:
+                  - row [ref=f9e211]:
+                    - columnheader "Recipient" [ref=f9e212]
+                    - columnheader "Scheme" [ref=f9e214]
+                    - columnheader "Amount" [ref=f9e216]
+                    - columnheader "Status" [ref=f9e218]
+                    - columnheader "Date" [ref=f9e220]
+                - rowgroup [ref=f9e222]:
+                  - row [ref=f9e223]:
+                    - cell [ref=f9e224]
+                    - cell "Skill India" [ref=f9e225]
+                    - cell "₹28,00,000" [ref=f9e226]
+                    - cell "completed" [ref=f9e227]
+                    - cell "25 Mar 2024" [ref=f9e229]
+                  - row [ref=f9e230]:
+                    - cell [ref=f9e231]
+                    - cell "Swachh Bharat" [ref=f9e232]
+                    - cell "₹13,00,000" [ref=f9e233]
+                    - cell "completed" [ref=f9e234]
+                    - cell "20 Mar 2024" [ref=f9e236]
+                  - row [ref=f9e237]:
+                    - cell [ref=f9e238]
+                    - cell "Digital India" [ref=f9e239]
+                    - cell "₹16,00,000" [ref=f9e240]
+                    - cell "completed" [ref=f9e241]
+                    - cell "18 Mar 2024" [ref=f9e243]
+                  - row [ref=f9e244]:
+                    - cell [ref=f9e245]
+                    - cell "PM Kisan" [ref=f9e246]
+                    - cell "₹19,00,000" [ref=f9e247]
+                    - cell "completed" [ref=f9e248]
+                    - cell "15 Mar 2024" [ref=f9e250]
+                  - row [ref=f9e251]:
+                    - cell [ref=f9e252]
+                    - cell "PM Awas Yojana" [ref=f9e253]
+                    - cell "₹9,00,000" [ref=f9e254]
+                    - cell "completed" [ref=f9e255]
+                    - cell "12 Mar 2024" [ref=f9e257]
+  - generic [ref=f9e258]: "0"

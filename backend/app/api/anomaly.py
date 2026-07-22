@@ -12,7 +12,7 @@ router = APIRouter()
 def detect_anomalies(db: Session = Depends(get_db)):
     transactions = db.query(Transaction).all()
     if not transactions:
-        return {"anomalies": [], "message": "No transactions available"}
+        return []
 
     dept_amounts = {}
     monthly_amounts = {}
@@ -73,4 +73,4 @@ def detect_anomalies(db: Session = Depends(get_db)):
             anomaly_id += 1
 
     anomalies.sort(key=lambda x: x["severity"], reverse=True)
-    return {"anomalies": anomalies}
+    return anomalies
