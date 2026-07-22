@@ -28,7 +28,6 @@ def get_dashboard(db: Session = Depends(get_db)):
         "recent_transactions": [
             {
                 "id": str(t.id),
-                "recipient_name": t.recipient_name or "N/A",
                 "scheme_id": t.scheme,
                 "amount": float(t.amount or 0),
                 "status": t.status or "pending",

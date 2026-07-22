@@ -1,28 +1,61 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { ProtectedRoute } from "@/components/auth/ProtectedRoute";
 import { DashboardLayout } from "@/components/layout/DashboardLayout";
 import { Card } from "@/components/ui/Card";
 import { Loading } from "@/components/ui/Loading";
-import { useApi } from "@/hooks/useApi";
-import { analyticsApi } from "@/lib/api";
 import { SpendingChart } from "@/components/Charts/SpendingChart";
 import { TrendChart } from "@/components/Charts/TrendChart";
 import { DollarSign, BarChart3, PieChart, TrendingUp } from "lucide-react";
 import type { AnalyticsData } from "@/types";
 
 function AnalyticsContent() {
-  const { data: trendData, status: trendStatus, execute: executeTrend } = useApi<AnalyticsData["spending_trend"]>(() => analyticsApi.getSpendingTrends());
-  const { data: categoryData, status: categoryStatus, execute: executeCategory } = useApi<AnalyticsData["category_breakdown"]>(() => analyticsApi.getCategoryBreakdown());
+  const [trendData, setTrendData] = useState<AnalyticsData["spending_trend"]>([]);
+  const [categoryData, setCategoryData] = useState<AnalyticsData["category_breakdown"]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-  React.useEffect(() => {
-    executeTrend();
-    executeCategory();
-  }, [executeTrend, executeCategory]);
+  useEffect(() => {
+    let cancelled = false;
 
-  const isLoading = trendStatus === "loading" || categoryStatus === "loading";
-  const hasError = trendStatus === "error" || categoryStatus === "error";
+    async function load() {
+      setLoading(true);
+      setError(null);
+      try {
+        const [trendRes, categoryRes] = await Promise.all([
+          fetch("/api/analytics/spending-trends/"),
+          fetch("/api/analytics/category-breakdown/"),
+        ]);
+
+        if (!trendRes.ok || !categoryRes.ok) {
+          throw new Error("Failed to load analytics data");
+        }
+
+        const trendJson = await trendRes.json();
+        const categoryJson = await categoryRes.json();
+
+        if (!cancelled) {
+          setTrendData(trendJson);
+          setCategoryData(categoryJson);
+        }
+      } catch (err) {
+        if (!cancelled) {
+          setError(err instanceof Error ? err.message : "Failed to load analytics data");
+        }
+      } finally {
+        if (!cancelled) {
+          setLoading(false);
+        }
+      }
+    }
+
+    load();
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   const formatCurrency = (value: number) => {
     return `₹${value.toLocaleString("en-IN")}`;
@@ -38,7 +71,7 @@ function AnalyticsContent() {
     { label: "Avg Monthly", value: trendData && trendData.length > 0 ? formatCurrency(Math.round(avgMonthly / trendData.length)) : "₹0", icon: PieChart, color: "text-orange-600", bg: "bg-orange-50" },
   ];
 
-  if (isLoading) {
+  if (loading) {
     return (
       <div className="flex items-center justify-center py-12">
         <Loading size="lg" />
@@ -46,12 +79,10 @@ function AnalyticsContent() {
     );
   }
 
-  if (hasError) {
+  if (error) {
     return (
       <div className="rounded-md bg-red-50 p-4 text-sm text-red-600">
-        {(trendStatus === "error" && trendData === null) || (categoryStatus === "error" && categoryData === null)
-          ? "Failed to load analytics data"
-          : ""}
+        {error}
       </div>
     );
   }

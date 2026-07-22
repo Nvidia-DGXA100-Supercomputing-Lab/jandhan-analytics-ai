@@ -1,0 +1,16 @@
+- generic [active] [ref=e1]:
+  - button "Open Next.js Dev Tools" [ref=e9] [cursor=pointer]
+  - alert [ref=e13]
+  - generic [ref=e14]:
+    - generic [ref=e15]:
+      - heading "Dashboard" [level=2] [ref=e16]
+      - paragraph [ref=e17]: Overview of spending and scheme activity
+    - generic [ref=e18]:
+      - generic [ref=e25]
+      - generic [ref=e35]
+      - generic [ref=e47]
+      - generic [ref=e57]
+    - generic [ref=e60]:
+      - generic [ref=e61]
+      - generic [ref=e107]
+  - generic [ref=e163]: "0"

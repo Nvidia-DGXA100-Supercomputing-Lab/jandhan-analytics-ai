@@ -2,8 +2,6 @@
 
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
-import Sidebar from "@/components/Sidebar";
-import Navbar from "@/components/Navbar";
 import { useAuth } from "@/hooks/useAuth";
 
 export default function DashboardLayout({
@@ -12,7 +10,7 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }>) {
   const router = useRouter();
-  const { token, isLoading, isAuthenticated } = useAuth();
+  const { isLoading, isAuthenticated } = useAuth();
 
   useEffect(() => {
     if (!isLoading && !isAuthenticated) {
@@ -32,15 +30,5 @@ export default function DashboardLayout({
     return null;
   }
 
-  return (
-    <div className="flex h-screen bg-slate-100 dark:bg-slate-950 transition-colors duration-300">
-      <Sidebar />
-      <div className="flex-1 flex flex-col overflow-hidden">
-        <Navbar />
-        <main className="flex-1 overflow-y-auto p-6 scrollbar-thin">
-          {children}
-        </main>
-      </div>
-    </div>
-  );
+  return <>{children}</>;
 }

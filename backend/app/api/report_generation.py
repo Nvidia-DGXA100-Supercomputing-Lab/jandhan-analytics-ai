@@ -27,9 +27,9 @@ def generate_report(report_type: str, db: Session = Depends(get_db)):
         .all()
     )
     monthly = (
-        db.query(func.strftime("%Y-%m", Transaction.date), func.sum(Transaction.amount))
-        .group_by(func.strftime("%Y-%m", Transaction.date))
-        .order_by(func.strftime("%Y-%m", Transaction.date))
+        db.query(func.substr(Transaction.date, 1, 7), func.sum(Transaction.amount))
+        .group_by(func.substr(Transaction.date, 1, 7))
+        .order_by(func.substr(Transaction.date, 1, 7))
         .all()
     )
 

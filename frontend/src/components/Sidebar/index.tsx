@@ -20,15 +20,30 @@ import {
 import { useAuth } from "@/hooks/useAuth";
 
 const navItems = [
-  { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
-  { href: "/analytics", label: "Analytics", icon: BarChart3 },
-  { href: "/transactions", label: "Transactions", icon: List },
-  { href: "/schemes", label: "Schemes", icon: FolderOpen },
-  { href: "/forecasting", label: "Forecasting", icon: TrendingUp },
-  { href: "/chatbot", label: "AI Assistant", icon: MessageSquare },
-  { href: "/reports", label: "Reports", icon: FileText },
-  { href: "/anomaly", label: "Anomaly Detection", icon: AlertTriangle },
+  { href: "/dashboard", label: "Dashboard", icon: "LayoutDashboard" },
+  { href: "/analytics", label: "Analytics", icon: "BarChart3" },
+  { href: "/transactions", label: "Transactions", icon: "List" },
+  { href: "/schemes", label: "Schemes", icon: "FolderOpen" },
+  { href: "/forecasting", label: "Forecasting", icon: "TrendingUp" },
+  { href: "/chatbot", label: "AI Assistant", icon: "MessageSquare" },
+  { href: "/reports", label: "Reports", icon: "FileText" },
+  { href: "/anomaly", label: "Anomaly Detection", icon: "AlertTriangle" },
 ];
+
+const iconMap: Record<string, React.ElementType> = {
+  LayoutDashboard,
+  BarChart3,
+  MessageSquare,
+  TrendingUp,
+  FileText,
+  Settings,
+  LogOut,
+  Menu,
+  X,
+  List,
+  FolderOpen,
+  AlertTriangle,
+};
 
 export default function Sidebar() {
   const pathname = usePathname();
@@ -41,13 +56,19 @@ export default function Sidebar() {
     router.push("/login");
   };
 
+  const renderIcon = (name: string, props: Record<string, unknown> = {}) => {
+    const IconComponent = iconMap[name];
+    if (!IconComponent) return null;
+    return <IconComponent {...props} />;
+  };
+
   return (
     <>
       <button
         className="lg:hidden fixed top-4 left-4 z-50 p-2 bg-white dark:bg-slate-900 rounded-md shadow-md"
         onClick={() => setIsOpen(!isOpen)}
       >
-        {isOpen ? <X size={24} /> : <Menu size={24} />}
+        {isOpen ? renderIcon("X", { size: 24 }) : renderIcon("Menu", { size: 24 })}
       </button>
 
       <aside
@@ -61,7 +82,7 @@ export default function Sidebar() {
         <div className="p-6">
           <Link href="/dashboard" className="flex items-center gap-2">
             <div className="w-8 h-8 bg-primary-500 rounded-lg flex items-center justify-center">
-              <span className="font-bold text-white">J</span>
+              {renderIcon("LayoutDashboard", { size: 20, className: "text-white" })}
             </div>
             <span className="text-xl font-bold">JanDhan</span>
           </Link>
@@ -69,7 +90,6 @@ export default function Sidebar() {
 
         <nav className="mt-6 px-4 space-y-1">
           {navItems.map((item) => {
-            const Icon = item.icon;
             const isActive = (pathname || "").startsWith(item.href);
             return (
               <Link
@@ -81,7 +101,7 @@ export default function Sidebar() {
                 `}
                 onClick={() => setIsOpen(false)}
               >
-                <Icon size={20} />
+                {renderIcon(item.icon, { size: 20 })}
                 <span>{item.label}</span>
               </Link>
             );
@@ -93,7 +113,7 @@ export default function Sidebar() {
             onClick={handleLogout}
             className="flex items-center gap-3 px-4 py-3 text-slate-300 hover:bg-slate-800 hover:text-white rounded-lg transition-colors w-full"
           >
-            <LogOut size={20} />
+            {renderIcon("LogOut", { size: 20 })}
             <span>Logout</span>
           </button>
         </div>

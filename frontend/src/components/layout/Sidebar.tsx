@@ -21,21 +21,42 @@ import { useAuth } from "@/hooks/useAuth";
 import { cn } from "@/lib/utils";
 
 const navItems = [
-  { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
-  { href: "/analytics", label: "Analytics", icon: BarChart3 },
-  { href: "/transactions", label: "Transactions", icon: List },
-  { href: "/schemes", label: "Schemes", icon: FolderOpen },
-  { href: "/forecasting", label: "Forecasting", icon: TrendingUp },
-  { href: "/chatbot", label: "AI Assistant", icon: MessageSquare },
-  { href: "/reports", label: "Reports", icon: FileText },
-  { href: "/anomaly", label: "Anomaly Detection", icon: AlertTriangle },
+  { href: "/dashboard", label: "Dashboard", icon: "LayoutDashboard" },
+  { href: "/analytics", label: "Analytics", icon: "BarChart3" },
+  { href: "/transactions", label: "Transactions", icon: "List" },
+  { href: "/schemes", label: "Schemes", icon: "FolderOpen" },
+  { href: "/forecasting", label: "Forecasting", icon: "TrendingUp" },
+  { href: "/chatbot", label: "AI Assistant", icon: "MessageSquare" },
+  { href: "/reports", label: "Reports", icon: "FileText" },
+  { href: "/anomaly", label: "Anomaly Detection", icon: "AlertTriangle" },
 ];
+
+const iconMap: Record<string, React.ElementType> = {
+  LayoutDashboard,
+  BarChart3,
+  TrendingUp,
+  MessageSquare,
+  FileText,
+  LogOut,
+  User,
+  List,
+  FolderOpen,
+  AlertTriangle,
+  ChevronLeft,
+  ChevronRight,
+};
 
 export function Sidebar() {
   const [collapsed, setCollapsed] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
   const { user, logout } = useAuth();
+
+  const renderIcon = (name: string, props: Record<string, unknown> = {}) => {
+    const IconComponent = iconMap[name];
+    if (!IconComponent) return null;
+    return <IconComponent {...props} />;
+  };
 
   return (
     <>
@@ -51,7 +72,7 @@ export function Sidebar() {
           {!collapsed && (
             <div className="flex items-center gap-2">
               <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary-600 text-white">
-                <LayoutDashboard className="h-5 w-5" />
+                {renderIcon("LayoutDashboard", { className: "h-5 w-5" })}
               </div>
               <span className="text-lg font-bold text-gray-900">JanDhan</span>
             </div>
@@ -60,7 +81,7 @@ export function Sidebar() {
             onClick={() => setCollapsed(!collapsed)}
             className="hidden h-8 w-8 items-center justify-center rounded-md hover:bg-gray-100 lg:flex"
           >
-            {collapsed ? <ChevronRight className="h-4 w-4" /> : <ChevronLeft className="h-4 w-4" />}
+            {collapsed ? renderIcon("ChevronRight", { className: "h-4 w-4" }) : renderIcon("ChevronLeft", { className: "h-4 w-4" })}
           </button>
         </div>
 
@@ -78,7 +99,7 @@ export function Sidebar() {
                 )}
                 onClick={() => setMobileOpen(false)}
               >
-                <item.icon className="h-5 w-5 flex-shrink-0" />
+                {renderIcon(item.icon, { className: "h-5 w-5 flex-shrink-0" })}
                 {!collapsed && <span>{item.label}</span>}
               </Link>
             );
@@ -88,7 +109,7 @@ export function Sidebar() {
         <div className="border-t border-gray-200 p-2">
           <div className={cn("flex items-center gap-3 rounded-md px-3 py-2", collapsed && "justify-center")}>
             <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary-100 text-primary-700">
-              <User className="h-4 w-4" />
+              {renderIcon("User", { className: "h-4 w-4" })}
             </div>
             {!collapsed && (
               <div className="flex-1 min-w-0">
@@ -104,7 +125,7 @@ export function Sidebar() {
               collapsed && "justify-center"
             )}
           >
-            <LogOut className="h-5 w-5 flex-shrink-0" />
+            {renderIcon("LogOut", { className: "h-5 w-5 flex-shrink-0" })}
             {!collapsed && <span>Logout</span>}
           </button>
         </div>
@@ -114,7 +135,7 @@ export function Sidebar() {
         onClick={() => setMobileOpen(!mobileOpen)}
         className="fixed bottom-4 right-4 z-40 flex h-12 w-12 items-center justify-center rounded-full bg-primary-600 text-white shadow-lg lg:hidden"
       >
-        {mobileOpen ? <ChevronLeft className="h-5 w-5" /> : <LayoutDashboard className="h-5 w-5" />}
+        {mobileOpen ? renderIcon("ChevronLeft", { className: "h-5 w-5" }) : renderIcon("LayoutDashboard", { className: "h-5 w-5" })}
       </button>
     </>
   );

@@ -1,6 +1,6 @@
 import { AuthResponse, LoginRequest, RegisterRequest, ApiError } from "@/types";
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "/api";
+const API_BASE_URL = "http://localhost:8000/api";
 
 const getToken = (): string | null => {
   if (typeof window === "undefined") return null;
@@ -128,19 +128,19 @@ export const dashboardApi = {
 
 export const analyticsApi = {
   getSpendingTrends: async (): Promise<import("@/types").AnalyticsData["spending_trend"]> => {
-    return apiRequest<import("@/types").AnalyticsData["spending_trend"]>("/analytics/spending-trends");
+    return apiRequest<import("@/types").AnalyticsData["spending_trend"]>("/analytics/spending-trends/");
   },
 
   getCategoryBreakdown: async (): Promise<import("@/types").AnalyticsData["category_breakdown"]> => {
-    return apiRequest<import("@/types").AnalyticsData["category_breakdown"]>("/analytics/category-breakdown");
+    return apiRequest<import("@/types").AnalyticsData["category_breakdown"]>("/analytics/category-breakdown/");
   },
 
   getSchemeUtilization: async (): Promise<import("@/types").AnalyticsData["scheme_utilization"]> => {
-    return apiRequest<import("@/types").AnalyticsData["scheme_utilization"]>("/analytics/scheme-utilization");
+    return apiRequest<import("@/types").AnalyticsData["scheme_utilization"]>("/analytics/scheme-utilization/");
   },
 
   getGeographicDistribution: async (): Promise<import("@/types").AnalyticsData["geographic_distribution"]> => {
-    return apiRequest<import("@/types").AnalyticsData["geographic_distribution"]>("/analytics/geographic-distribution");
+    return apiRequest<import("@/types").AnalyticsData["geographic_distribution"]>("/analytics/geographic-distribution/");
   },
 };
 

@@ -17,9 +17,9 @@ def get_analytics(db: Session = Depends(get_db)):
         .all()
     )
     quarterly = (
-        db.query(func.strftime("%Y-%m", Transaction.date), func.sum(Transaction.amount))
-        .group_by(func.strftime("%Y-%m", Transaction.date))
-        .order_by(func.strftime("%Y-%m", Transaction.date))
+        db.query(func.substr(Transaction.date, 1, 7), func.sum(Transaction.amount))
+        .group_by(func.substr(Transaction.date, 1, 7))
+        .order_by(func.substr(Transaction.date, 1, 7))
         .all()
     )
 
@@ -32,9 +32,9 @@ def get_analytics(db: Session = Depends(get_db)):
 @router.get("/spending-trends/")
 def get_spending_trends(db: Session = Depends(get_db)):
     trends = (
-        db.query(func.strftime("%Y-%m", Transaction.date), func.sum(Transaction.amount))
-        .group_by(func.strftime("%Y-%m", Transaction.date))
-        .order_by(func.strftime("%Y-%m", Transaction.date))
+        db.query(func.substr(Transaction.date, 1, 7), func.sum(Transaction.amount))
+        .group_by(func.substr(Transaction.date, 1, 7))
+        .order_by(func.substr(Transaction.date, 1, 7))
         .all()
     )
     return [{"month": m, "amount": a} for m, a in trends]

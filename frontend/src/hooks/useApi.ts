@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useRef } from "react";
 
 type Status = "idle" | "loading" | "success" | "error";
 
@@ -22,12 +22,15 @@ export function useApi<T>(asyncFn: (...args: unknown[]) => Promise<T>): UseApiRe
     error: null,
   });
 
+  const asyncFnRef = useRef(asyncFn);
+  asyncFnRef.current = asyncFn;
+
   const execute = useCallback(
     async (...args: unknown[]): Promise<T | undefined> => {
       setState({ data: null, status: "loading", error: null });
 
       try {
-        const result = await asyncFn(...args);
+        const result = await asyncFnRef.current(...args);
         setState({ data: result, status: "success", error: null });
         return result;
       } catch (error) {
@@ -36,7 +39,7 @@ export function useApi<T>(asyncFn: (...args: unknown[]) => Promise<T>): UseApiRe
         return undefined;
       }
     },
-    [asyncFn]
+    []
   );
 
   const reset = useCallback(() => {
