@@ -1,0 +1,21 @@
+- generic [active] [ref=f2e1]:
+  - button "Open Next.js Dev Tools" [ref=f2e12] [cursor=pointer]
+  - alert [ref=f2e16]
+  - generic [ref=f2e20]:
+    - generic [ref=f2e21]:
+      - heading "Sign in to JanDhan" [level=1] [ref=f2e25]
+      - paragraph [ref=f2e26]: AI-Powered Public Spending Transparency Platform
+    - generic [ref=f2e27]:
+      - generic [ref=f2e28]:
+        - generic [ref=f2e29]: Email
+        - textbox "Email" [ref=f2e30]:
+          - /placeholder: you@example.com
+      - generic [ref=f2e31]:
+        - generic [ref=f2e32]: Password
+        - textbox "Password" [ref=f2e33]:
+          - /placeholder: ••••••••
+      - button "Sign in" [ref=f2e34] [cursor=pointer]
+    - paragraph [ref=f2e35]:
+      - text: Don't have an account?
+      - link "Sign up" [ref=f2e36] [cursor=pointer]:
+        - /url: /register

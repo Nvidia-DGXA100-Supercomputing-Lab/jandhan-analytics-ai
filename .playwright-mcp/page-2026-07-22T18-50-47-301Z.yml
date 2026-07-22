@@ -1,22 +1,19 @@
-- generic [active] [ref=f3e11]:
-  - button "Open Next.js Dev Tools" [ref=f3e6] [cursor=pointer]
-  - alert [ref=f3e10]
+- generic [active] [ref=f3e1]:
+  - button "Open Next.js Dev Tools" [ref=f3e7] [cursor=pointer]
+  - alert [ref=f3e11]
   - generic [ref=f3e15]:
     - generic [ref=f3e16]:
       - heading "Sign in to JanDhan" [level=1] [ref=f3e20]
       - paragraph [ref=f3e21]: AI-Powered Public Spending Transparency Platform
-    - generic [ref=f3e32]: Unexpected token '<', "<!DOCTYPE "... is not valid JSON
     - generic [ref=f3e22]:
       - generic [ref=f3e23]:
         - generic [ref=f3e24]: Email
         - textbox "Email" [ref=f3e25]:
           - /placeholder: you@example.com
-          - text: admin@jandhan.gov.in
       - generic [ref=f3e26]:
         - generic [ref=f3e27]: Password
         - textbox "Password" [ref=f3e28]:
           - /placeholder: ••••••••
-          - text: admin123
       - button "Sign in" [ref=f3e29] [cursor=pointer]
     - paragraph [ref=f3e30]:
       - text: Don't have an account?
